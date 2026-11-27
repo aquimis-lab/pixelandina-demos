@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Interna Sin Papeles — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>App Interna Sin Papeles — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: la empresa deja los formularios impresos y pasa a formularios digitales que el jefe aprueba desde el celular, sin imprimir ni archivar papel.</p>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- KPIs -->
+  <section class="kpis" aria-label="Indicadores de la app">
+    <div class="kpi">
+      <span class="kpi-label">Formularios enviados hoy</span>
+      <span class="kpi-value" id="kpiToday">0</span>
+    </div>
+    <div class="kpi alert">
+      <span class="kpi-label">Pendientes de aprobación</span>
+      <span class="kpi-value" id="kpiPending">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Aprobados del mes</span>
+      <span class="kpi-value" id="kpiApproved">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Papel ahorrado (hojas)</span>
+      <span class="kpi-value" id="kpiPaper">0</span>
+    </div>
+  </section>
+
+  <!-- Selector de rol -->
+  <section class="role-bar" aria-label="Selector de rol">
+    <label for="roleSelect">👤 Estás actuando como:</label>
+    <select id="roleSelect">
+      <option value="Empleado">Empleado — envía formularios</option>
+      <option value="Jefe">Jefe — aprueba y rechaza</option>
+    </select>
+    <span class="role-hint" id="roleHint">Como empleado puedes llenar y enviar formularios. Cambia a rol Jefe para aprobarlos o rechazarlos.</span>
+  </section>
+
+  <div class="columns">
+
+    <!-- Nuevo formulario -->
+    <section class="panel form-panel" aria-label="Nuevo formulario digital">
+      <h2>📝 Nuevo formulario digital</h2>
+      <p class="panel-sub">Distribuidora La Sierra — el empleado lo llena en segundos y le llega al jefe al instante, sin imprimir nada.</p>
+
+      <div class="form-error" id="formError"></div>
+      <form id="paperForm" novalidate>
+        <div class="field">
+          <label for="formEmployee">Quién envía</label>
+          <select id="formEmployee"></select>
+        </div>
+        <div class="field">
+          <label for="formType">Tipo de formulario</label>
+          <select id="formType"></select>
+        </div>
+        <div id="formFields"></div>
+        <button type="submit" class="btn-primary btn-amber btn-block">📤 Enviar formulario</button>
+      </form>
+      <p class="form-note">Al enviarlo, el formulario aparece en la bandeja con estado «Pendiente» y el jefe lo revisa con su rol.</p>
+    </section>
+
+    <!-- Columna lateral: pendientes -->
+    <div class="side-col">
+
+      <section class="panel pending-panel" aria-label="Pendientes de aprobación">
+        <h2>📥 Pendientes de aprobación</h2>
+        <p class="panel-sub">Lo que está esperando la decisión del jefe, en tiempo real.</p>
+        <ul class="pending-list" id="pendingList"></ul>
+      </section>
+
+      <section class="panel how-panel" aria-label="Cómo funciona">
+        <h2>♻️ Así funciona</h2>
+        <ol class="steps-list">
+          <li><strong>1.</strong> El empleado llena el formulario desde su celular.</li>
+          <li><strong>2.</strong> Llega a la bandeja del jefe como «Pendiente».</li>
+          <li><strong>3.</strong> El jefe aprueba o rechaza con motivo, en un toque.</li>
+          <li><strong>4.</strong> Todo queda en el historial: nada se pierde en un archivador.</li>
+        </ol>
+        <p class="form-note">Cada formulario digital reemplaza su versión impresa: permiso 2 hojas, novedad 1, checklist 3 y materiales 2.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Bandeja / historial -->
+  <section class="panel inbox-panel" aria-label="Bandeja de formularios">
+    <h2>Bandeja de formularios</h2>
+    <p class="panel-sub">Todos los envíos de la empresa, filtrables por tipo y estado. Pulsa «Ver detalle» para abrir un envío completo.</p>
+
+    <div class="inv-controls">
+      <select id="filterType" aria-label="Filtrar por tipo">
+        <option value="todos">Todos los tipos</option>
+      </select>
+      <select id="filterStatus" aria-label="Filtrar por estado">
+        <option value="todos">Todos los estados</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="Aprobado">Aprobado</option>
+        <option value="Rechazado">Rechazado</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>N.º</th>
+            <th>Tipo</th>
+            <th>Empleado</th>
+            <th>Resumen</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="inboxBody"></tbody>
+      </table>
+    </div>
+
+    <div class="activity" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 La app está activa: cada envío y cada decisión quedan registrados al instante.</li>
+      </ul>
+    </div>
+
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración. El sistema real trabaja con los formularios, áreas y jefes de tu empresa, desde el celular o la computadora. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

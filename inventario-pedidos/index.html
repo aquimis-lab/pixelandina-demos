@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Inventario y Pedidos — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Panel de Inventario y Pedidos — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: la distribuidora controla su stock, recibe alertas antes de quedarse sin producto y registra pedidos que descuentan el inventario solos.</p>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- KPIs -->
+  <section class="kpis" aria-label="Indicadores del negocio">
+    <div class="kpi">
+      <span class="kpi-label">Productos en catálogo</span>
+      <span class="kpi-value" id="kpiCatalog">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Unidades en stock</span>
+      <span class="kpi-value" id="kpiUnits">0</span>
+    </div>
+    <div class="kpi alert">
+      <span class="kpi-label">Alertas de stock</span>
+      <span class="kpi-value" id="kpiAlerts">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Pedidos de hoy</span>
+      <span class="kpi-value" id="kpiOrders">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Ventas de hoy</span>
+      <span class="kpi-value" id="kpiSales">$0.00</span>
+    </div>
+  </section>
+
+  <div class="columns">
+
+    <!-- Inventario -->
+    <section class="panel inventory-panel" aria-label="Inventario">
+      <h2>Inventario — Distribuidora La Sierra</h2>
+      <p class="panel-sub">El stock se mueve solo con cada pedido, entrada y ajuste. Nada se apunta en cuadernos.</p>
+
+      <div class="inv-controls">
+        <input type="search" id="searchInput" placeholder="🔎 Buscar por nombre o SKU…" aria-label="Buscar producto">
+        <select id="statusFilter" aria-label="Filtrar por estado">
+          <option value="todos">Todos los estados</option>
+          <option value="ok">OK</option>
+          <option value="bajo">Stock bajo</option>
+          <option value="agotado">Agotado</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>SKU</th>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Stock</th>
+              <th>Mín.</th>
+              <th>Compra</th>
+              <th>Venta</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryBody"></tbody>
+        </table>
+      </div>
+
+      <h3>Entrada de mercadería y ajustes</h3>
+      <div class="form-error" id="entryError"></div>
+      <form id="entryForm" class="inline-form" novalidate>
+        <div class="field grow">
+          <label for="entryProduct">Producto</label>
+          <select id="entryProduct"></select>
+        </div>
+        <div class="field">
+          <label for="entryType">Movimiento</label>
+          <select id="entryType">
+            <option value="entrada">Entrada (suma)</option>
+            <option value="ajuste">Ajuste (fija el stock)</option>
+          </select>
+        </div>
+        <div class="field small">
+          <label for="entryQty">Cantidad</label>
+          <input id="entryQty" type="number" min="0" step="1" placeholder="0">
+        </div>
+        <button type="submit" class="btn-primary">Registrar</button>
+      </form>
+      <p class="form-note">Entrada: llegó mercadería del proveedor y se suma al stock. Ajuste: conteo físico — el stock queda en la cantidad indicada.</p>
+    </section>
+
+    <!-- Columna lateral: alertas + nuevo pedido -->
+    <div class="side-col">
+
+      <section class="panel alerts-panel" aria-label="Alertas de stock">
+        <h2>🚨 Alertas de stock</h2>
+        <p class="panel-sub">Se generan solas cuando un producto baja del mínimo.</p>
+        <ul class="alerts-list" id="alertsList"></ul>
+      </section>
+
+      <section class="panel order-panel" aria-label="Crear pedido">
+        <h2>🧾 Nuevo pedido</h2>
+        <p class="panel-sub">Al registrarlo, el stock se descuenta en vivo.</p>
+        <div class="form-error" id="orderError"></div>
+        <div class="field">
+          <label for="orderClient">Cliente</label>
+          <input id="orderClient" type="text" placeholder="Ej.: Tienda El Sol">
+        </div>
+        <div id="orderLines"></div>
+        <button type="button" class="btn-add-line" id="btnAddLine">＋ Agregar producto</button>
+        <div class="order-total-row">
+          <span>Total del pedido</span>
+          <strong id="orderTotal">$0.00</strong>
+        </div>
+        <button type="button" class="btn-primary btn-amber btn-block" id="btnCreateOrder">Registrar pedido</button>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Pedidos -->
+  <section class="panel orders-panel" aria-label="Pedidos de hoy">
+    <h2>Pedidos de hoy</h2>
+    <p class="panel-sub">Avanza cada pedido con los botones: Nuevo → Preparando → Entregado. Si se cancela antes de entregarlo, el stock vuelve solo.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>N.º</th>
+            <th>Cliente</th>
+            <th>Detalle</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody"></tbody>
+      </table>
+    </div>
+
+    <div class="activity" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 El panel está activo: el inventario se actualiza con cada movimiento.</li>
+      </ul>
+    </div>
+
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración. El sistema real trabaja con tu catálogo, tus precios y tus clientes, desde el celular o la computadora. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

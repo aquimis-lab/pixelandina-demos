@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asistente de Ventas por WhatsApp — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Asistente de Ventas por WhatsApp — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: así atiende el asistente a tus clientes y registra pedidos sin que muevas un dedo.</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- Panel izquierdo: chat -->
+  <section class="chat-panel" aria-label="Simulación de chat de WhatsApp">
+    <div class="phone">
+      <div class="chat-header">
+        <div class="avatar" aria-hidden="true">LE</div>
+        <div class="chat-header-info">
+          <strong>Tienda La Esquina — Demo</strong>
+          <span class="status"><span class="dot"></span> en línea · responde al instante</span>
+        </div>
+        <span class="wa-badge" aria-hidden="true">WhatsApp</span>
+      </div>
+
+      <div class="chat-body" id="chatBody" aria-live="polite"></div>
+
+      <div class="quick-replies" id="quickReplies" aria-label="Respuestas rápidas del cliente"></div>
+
+      <div class="chat-input-mock" aria-hidden="true">
+        <span class="fake-input">Escribe un mensaje…</span>
+        <span class="fake-send">➤</span>
+      </div>
+    </div>
+    <p class="hint">👆 Tú eres el cliente: toca las respuestas rápidas y mira cómo el panel del negocio se actualiza en vivo.</p>
+  </section>
+
+  <!-- Panel derecho: panel del negocio -->
+  <section class="business-panel" aria-label="Panel del negocio">
+    <h2>Panel del negocio</h2>
+    <p class="panel-sub">Lo que ve el dueño de la tienda, en tiempo real.</p>
+
+    <div class="kpis">
+      <div class="kpi">
+        <span class="kpi-label">Pedidos de hoy</span>
+        <span class="kpi-value" id="kpiOrders">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Ventas de hoy</span>
+        <span class="kpi-value" id="kpiSales">$0.00</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Conversaciones atendidas</span>
+        <span class="kpi-value" id="kpiChats">1</span>
+      </div>
+    </div>
+
+    <h3>Pedidos recibidos</h3>
+    <div class="table-wrap">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>N.º</th>
+            <th>Producto</th>
+            <th>Cant.</th>
+            <th>Total</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody">
+          <tr class="empty-row" id="emptyRow">
+            <td colspan="5">Todavía no hay pedidos. Completa una compra en el chat 👈</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="activity" id="activityLog" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 El asistente está activo y esperando clientes.</li>
+      </ul>
+    </div>
+
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración. El asistente real se conecta a tu número de WhatsApp Business. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

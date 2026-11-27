@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo Cotizador WhatsApp B2B — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Catálogo Cotizador WhatsApp B2B — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: el cliente mayorista arma su pedido en el catálogo, ve precios por caja y descuentos por volumen, y la cotización llega ordenada por WhatsApp. Sin llamadas, sin listas escritas a mano.</p>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- KPIs del negocio -->
+  <section class="kpis" aria-label="Indicadores del negocio">
+    <div class="kpi">
+      <span class="kpi-label">Cotizaciones recibidas</span>
+      <span class="kpi-value" id="kpiQuotes">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Monto cotizado</span>
+      <span class="kpi-value" id="kpiAmount">$0.00</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Cotizaciones cerradas</span>
+      <span class="kpi-value" id="kpiClosed">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Tasa de cierre</span>
+      <span class="kpi-value" id="kpiRate">0%</span>
+    </div>
+  </section>
+
+  <div class="columns">
+
+    <!-- Catálogo -->
+    <section class="panel catalog-panel" aria-label="Catálogo mayorista">
+      <h2>Catálogo mayorista — Distribuidora La Sierra</h2>
+      <p class="panel-sub">Precios por unidad y por caja. Al superar el volumen indicado en cada producto, se aplica el descuento extra solo, sin negociar por chat.</p>
+
+      <div class="inv-controls">
+        <input type="search" id="searchInput" placeholder="🔎 Buscar producto…" aria-label="Buscar producto">
+        <select id="categoryFilter" aria-label="Filtrar por categoría">
+          <option value="todas">Todas las categorías</option>
+        </select>
+      </div>
+
+      <div class="catalog-grid" id="catalogGrid"></div>
+    </section>
+
+    <!-- Columna lateral: carrito + datos del cliente -->
+    <div class="side-col">
+
+      <section class="panel cart-panel" aria-label="Carrito de cotización">
+        <h2>🧾 Carrito de cotización</h2>
+        <p class="panel-sub">Los totales se calculan en vivo: subtotal, descuento por volumen, IVA 15% y total.</p>
+
+        <div id="cartLines"></div>
+        <p class="cart-empty" id="cartEmpty">El carrito está vacío. Agrega productos del catálogo para cotizar.</p>
+
+        <div class="totals-box">
+          <div class="total-row"><span>Subtotal</span><strong id="sumSubtotal">$0.00</strong></div>
+          <div class="total-row discount" id="discountRow"><span>Descuento por volumen</span><strong id="sumDiscount">−$0.00</strong></div>
+          <div class="total-row"><span>IVA 15%</span><strong id="sumIva">$0.00</strong></div>
+          <div class="total-row grand"><span>Total</span><strong id="sumTotal">$0.00</strong></div>
+        </div>
+
+        <h3>Datos del cliente</h3>
+        <div class="form-error" id="quoteError"></div>
+        <div class="field">
+          <label for="clientBusiness">Negocio</label>
+          <input id="clientBusiness" type="text" placeholder="Ej.: Tienda y Víveres El Ahorro">
+        </div>
+        <div class="field">
+          <label for="clientName">Nombre de contacto</label>
+          <input id="clientName" type="text" placeholder="Ej.: Carlos Mendoza">
+        </div>
+        <div class="field">
+          <label for="clientCity">Ciudad</label>
+          <input id="clientCity" type="text" placeholder="Ej.: Durán">
+        </div>
+        <button type="button" class="btn-primary btn-amber btn-block" id="btnBuildQuote">💬 Enviar cotización por WhatsApp</button>
+        <p class="form-note">Primero verás el mensaje completo, tal como llegaría al WhatsApp de la distribuidora, antes de enviarlo.</p>
+      </section>
+
+      <!-- Vista previa del mensaje -->
+      <section class="panel preview-panel" id="previewPanel" aria-label="Vista previa del mensaje" hidden>
+        <h2>Vista previa del mensaje</h2>
+        <p class="panel-sub">Así llega la cotización al WhatsApp del negocio: completa y ordenada.</p>
+        <div class="chat-box">
+          <div class="chat-bubble"><pre id="previewText"></pre></div>
+        </div>
+        <button type="button" class="btn-primary btn-block" id="btnSendQuote">✓ Enviar y registrar cotización</button>
+        <button type="button" class="btn-ghost btn-block" id="btnEditQuote">Seguir editando el pedido</button>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Panel del negocio -->
+  <section class="panel quotes-panel" aria-label="Cotizaciones recibidas">
+    <h2>Cotizaciones recibidas — panel del negocio</h2>
+    <p class="panel-sub">Cada cotización enviada queda registrada con su número. Avanza su estado: Nueva → Atendida → Cerrada, y la tasa de cierre se actualiza sola.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>N.º</th>
+            <th>Cliente</th>
+            <th>Detalle</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="quotesBody"></tbody>
+      </table>
+    </div>
+
+    <div class="activity" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 El catálogo está activo: las cotizaciones llegan completas por WhatsApp y quedan registradas aquí.</li>
+      </ul>
+    </div>
+
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración. El sistema real trabaja con tu catálogo, tus precios mayoristas y tu número de WhatsApp, desde el celular o la computadora. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM WhatsApp por rubros — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>CRM WhatsApp por rubros — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: cada cliente que escribe por WhatsApp entra a un embudo de ventas, con seguimiento, plantillas y recordatorios. Cambia de rubro y mira cómo el mismo sistema se adapta a tu negocio.</p>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- Selector de rubro -->
+  <section class="rubro-bar" aria-label="Elegir rubro del negocio">
+    <div class="rubro-tabs" role="tablist" aria-label="Rubros disponibles">
+      <button type="button" class="rubro-tab active" data-rubro="clinica" role="tab">🦷 Clínica dental</button>
+      <button type="button" class="rubro-tab" data-rubro="tienda" role="tab">👗 Tienda de ropa</button>
+      <button type="button" class="rubro-tab" data-rubro="inmobiliaria" role="tab">🏠 Inmobiliaria</button>
+    </div>
+    <p class="rubro-line">Estás viendo el panel de <strong id="businessName">Clínica Dental Sonríe</strong> · Servicio mensual de CRM + WhatsApp de PixelAndina</p>
+  </section>
+
+  <!-- KPIs -->
+  <section class="kpis" aria-label="Indicadores del negocio">
+    <div class="kpi">
+      <span class="kpi-label">Contactos totales</span>
+      <span class="kpi-value" id="kpiTotal">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">En seguimiento</span>
+      <span class="kpi-value" id="kpiFollow">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Cierres del mes</span>
+      <span class="kpi-value" id="kpiClosed">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Tasa de cierre</span>
+      <span class="kpi-value" id="kpiRate">0%</span>
+    </div>
+  </section>
+
+  <!-- Embudo de ventas -->
+  <section class="panel pipeline-panel" aria-label="Embudo de ventas">
+    <h2>Embudo de ventas</h2>
+    <p class="panel-sub">Mueve cada cliente con las flechas ◀ ▶ según avanza la conversación. Los conteos y montos por etapa se calculan solos. Toca una tarjeta para abrir su chat.</p>
+    <div class="pipeline" id="pipeline"></div>
+  </section>
+
+  <div class="columns">
+
+    <!-- Conversaciones -->
+    <section class="panel chat-panel" aria-label="Conversaciones de WhatsApp">
+      <h2>Conversaciones de WhatsApp</h2>
+      <p class="panel-sub">Elige un cliente, revisa su chat y respóndele con una plantilla: si estaba en «Nuevo», pasa solo a «Contactado».</p>
+
+      <div class="chat-layout">
+        <ul class="conv-list" id="convList" aria-label="Lista de conversaciones"></ul>
+
+        <div class="chat-box">
+          <div class="chat-head">
+            <div class="avatar" id="chatAvatar" aria-hidden="true">–</div>
+            <div class="chat-head-info">
+              <strong id="chatName">Sin conversación</strong>
+              <span class="chat-meta" id="chatMeta">Elige un cliente de la lista</span>
+            </div>
+            <span class="badge" id="chatStage"></span>
+          </div>
+          <div class="chat-body" id="chatBody" aria-live="polite"></div>
+          <div class="composer">
+            <input type="text" id="freeText" placeholder="Escribe un mensaje libre…" aria-label="Escribir un mensaje libre">
+            <button type="button" class="btn-primary" id="btnSendFree">Enviar</button>
+          </div>
+        </div>
+      </div>
+
+      <h3>Plantillas de seguimiento (editables)</h3>
+      <p class="panel-sub">Edita el texto a tu gusto: <strong>{nombre}</strong> y <strong>{servicio}</strong> se reemplazan solos por los datos del cliente elegido.</p>
+      <div class="form-error" id="sendError"></div>
+      <div class="templates" id="templates"></div>
+    </section>
+
+    <!-- Columna lateral: recordatorios + actividad -->
+    <div class="side-col">
+
+      <section class="panel reminders-panel" aria-label="Recordatorios de seguimiento">
+        <h2>🔔 Recordatorios</h2>
+        <p class="panel-sub">Seguimientos pendientes generados desde tus conversaciones. Ningún cliente se enfría por olvido.</p>
+        <ul class="reminders-list" id="reminderList"></ul>
+      </section>
+
+      <section class="panel activity-panel" aria-label="Actividad reciente">
+        <h2>Actividad reciente</h2>
+        <div class="activity" aria-live="polite">
+          <ul id="activityList">
+            <li>🟢 El CRM está activo: cada mensaje y cada movimiento queda registrado.</li>
+          </ul>
+        </div>
+        <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración. El servicio real se conecta a tu número de WhatsApp Business y se configura con tus servicios, tus precios y tus plantillas. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

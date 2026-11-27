@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReseñasQueVenden — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>ReseñasQueVenden — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: el negocio pide reseñas de Google en el momento justo —al salir el cliente, por WhatsApp y con el QR del local— y responde todas desde un solo panel.</p>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- KPIs -->
+  <section class="kpis" aria-label="Indicadores de reputación">
+    <div class="kpi">
+      <span class="kpi-label">Calificación promedio</span>
+      <span class="kpi-value" id="kpiAvg">0.0 ★</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Total de reseñas</span>
+      <span class="kpi-value" id="kpiTotal">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Nuevas este mes</span>
+      <span class="kpi-value" id="kpiNewMonth">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Solicitudes enviadas</span>
+      <span class="kpi-value" id="kpiRequests">0</span>
+    </div>
+    <div class="kpi alert">
+      <span class="kpi-label">Sin responder</span>
+      <span class="kpi-value" id="kpiPending">0</span>
+    </div>
+  </section>
+
+  <div class="columns">
+
+    <!-- Reseñas -->
+    <section class="panel reviews-panel" aria-label="Reseñas del negocio">
+      <h2>Reseñas — Clínica Dental Sonríe</h2>
+      <p class="panel-sub">Responder cada reseña —la buena y la mala— es lo que convierte la reputación en clientes nuevos. Elige una plantilla, ajústala si quieres y publica la respuesta.</p>
+      <div id="reviewsList"></div>
+    </section>
+
+    <!-- Columna lateral: simulador + QR -->
+    <div class="side-col">
+
+      <section class="panel request-panel" aria-label="Solicitar una reseña">
+        <h2>📲 Pedir reseña por WhatsApp</h2>
+        <p class="panel-sub">Apenas el cliente sale contento, se le envía el enlace directo para dejar su reseña. Sin fricción: un toque y listo.</p>
+        <div class="form-error" id="requestError"></div>
+        <form id="requestForm" novalidate>
+          <div class="field">
+            <label for="reqName">Nombre del cliente</label>
+            <input id="reqName" type="text" placeholder="Ej.: Carolina Méndez">
+          </div>
+          <div class="field">
+            <label for="reqService">Servicio que recibió</label>
+            <select id="reqService">
+              <option value="Limpieza dental">Limpieza dental</option>
+              <option value="Blanqueamiento">Blanqueamiento</option>
+              <option value="Ortodoncia">Ortodoncia</option>
+              <option value="Implante dental">Implante dental</option>
+              <option value="Consulta y diagnóstico">Consulta y diagnóstico</option>
+              <option value="Endodoncia">Endodoncia</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary btn-amber btn-block">Enviar solicitud por WhatsApp</button>
+        </form>
+
+        <h3>Solicitudes</h3>
+        <ul class="requests-list" id="requestsList"></ul>
+        <p class="form-note">En esta demo, el botón «Simular que dejó reseña» imita al cliente que abre el enlace y publica su opinión de 4–5 estrellas.</p>
+      </section>
+
+      <section class="panel qr-panel" aria-label="Tarjeta QR del local">
+        <h2>🧾 Tarjeta QR del local</h2>
+        <p class="panel-sub">Se imprime y va en la recepción y en cada cubículo: el cliente escanea y cae directo en el formulario de reseñas.</p>
+        <div class="qr-card">
+          <p class="qr-biz">Clínica Dental Sonríe</p>
+          <p class="qr-cta">¿Te atendimos bien? ¡Cuéntalo! ⭐</p>
+          <svg id="qrSvg" class="qr-svg" viewBox="0 0 25 25" role="img" aria-label="Código QR decorativo de demostración"></svg>
+          <p class="qr-link">sonrie-dental.ec/resenas</p>
+          <p class="qr-scans">Escaneos registrados: <strong id="scanCount">0</strong></p>
+        </div>
+        <button type="button" class="btn-primary btn-block" id="btnScan">Simular un escaneo</button>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Actividad -->
+  <section class="panel activity-panel" aria-label="Actividad reciente">
+    <div class="activity" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 El panel está activo: cada solicitud, respuesta y reseña nueva se refleja al instante.</li>
+      </ul>
+    </div>
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración. El servicio real conecta tu ficha de Google, tu WhatsApp y tu local: tú atiendes, el sistema pide y ordena las reseñas. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

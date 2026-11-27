@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agendamiento en línea para salud y belleza — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Agendamiento en línea — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: tus clientes reservan solos, a cualquier hora, y la agenda del negocio se llena sin llamadas ni mensajes sueltos.</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- Panel izquierdo: reserva del cliente -->
+  <section class="booking-panel" aria-label="Reserva en línea del cliente">
+    <div class="booking-card">
+      <div class="booking-header">
+        <div class="avatar" aria-hidden="true">S</div>
+        <div class="booking-header-info">
+          <strong>Clínica Dental Sonríe — Demo</strong>
+          <span class="status"><span class="dot"></span> Reservas abiertas · confirma al instante</span>
+        </div>
+        <span class="booking-badge" aria-hidden="true">Citas</span>
+      </div>
+
+      <ol class="steps" id="stepsBar" aria-label="Pasos de la reserva">
+        <li data-step="1" class="active">Servicio</li>
+        <li data-step="2">Profesional</li>
+        <li data-step="3">Fecha y hora</li>
+        <li data-step="4">Tus datos</li>
+        <li data-step="5">Listo</li>
+      </ol>
+
+      <div class="booking-body" id="bookingBody" aria-live="polite"></div>
+    </div>
+    <p class="hint">👆 Tú eres el cliente: completa la reserva paso a paso y mira cómo la agenda del negocio se actualiza en vivo.</p>
+  </section>
+
+  <!-- Panel derecho: panel del negocio -->
+  <section class="business-panel" aria-label="Panel del negocio">
+    <h2>Agenda del negocio</h2>
+    <p class="panel-sub">Lo que ve la recepción de la clínica, en tiempo real. Mostrando las citas de <strong>hoy</strong>.</p>
+
+    <div class="kpis">
+      <div class="kpi">
+        <span class="kpi-label">Citas de hoy</span>
+        <span class="kpi-value" id="kpiToday">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Ingresos estimados hoy</span>
+        <span class="kpi-value" id="kpiIncome">$0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Reservas en la demo</span>
+        <span class="kpi-value" id="kpiTotal">0</span>
+      </div>
+    </div>
+
+    <h3>Citas de hoy</h3>
+    <div class="table-wrap">
+      <table class="agenda-table">
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Cliente</th>
+            <th>Servicio</th>
+            <th>Profesional</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="agendaBody"></tbody>
+      </table>
+    </div>
+
+    <div class="activity" id="activityLog" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 La agenda en línea está activa y recibiendo reservas.</li>
+      </ul>
+    </div>
+
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración. El sistema real se conecta a la agenda de tu clínica o salón y envía recordatorios automáticos. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

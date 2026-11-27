@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notas de Voz y Reuniones en Español — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Notas de Voz y Reuniones en Español — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: los audios de WhatsApp y las reuniones se convierten solos en texto, resumen y tareas con responsable y fecha. Nadie vuelve a escuchar un audio de 18 minutos dos veces.</p>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- KPIs -->
+  <section class="kpis" aria-label="Indicadores del servicio">
+    <div class="kpi">
+      <span class="kpi-label">Audios procesados</span>
+      <span class="kpi-value" id="kpiProcessed">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Minutos ahorrados (estimados)</span>
+      <span class="kpi-value" id="kpiMinutes">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Tareas generadas</span>
+      <span class="kpi-value" id="kpiTasks">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Tareas completadas</span>
+      <span class="kpi-value" id="kpiTasksDone">0</span>
+    </div>
+  </section>
+
+  <div class="columns">
+
+    <!-- Lista de audios -->
+    <section class="panel audios-panel" aria-label="Audios recibidos">
+      <h2>🎧 Audios recibidos — Comercial Andina</h2>
+      <p class="panel-sub">Elige un audio para ver su transcripción y el resultado de la IA.</p>
+      <ul class="audio-list" id="audioList"></ul>
+      <p class="form-note">Los minutos ahorrados se estiman así: pasar un audio a texto y sacar las tareas a mano toma unas 3 veces su duración. La herramienta lo entrega en segundos.</p>
+    </section>
+
+    <!-- Reproductor + transcripción -->
+    <section class="panel player-panel" aria-label="Reproductor y transcripción">
+      <h2 id="playerTitle">Transcripción</h2>
+      <p class="panel-sub" id="playerMeta">—</p>
+
+      <div class="player" aria-label="Reproductor simulado">
+        <button type="button" class="btn-play" id="btnPlay" aria-label="Reproducir o pausar">
+          <span id="playIcon">▶</span>
+        </button>
+        <div class="player-track">
+          <div class="progress-track" id="progressTrack" role="slider" aria-label="Posición del audio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="player-times">
+            <span id="timeCurrent">0:00</span>
+            <span class="player-speed">Reproducción simulada ×10 · toca la barra o un párrafo para saltar</span>
+            <span id="timeTotal">0:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="transcript" id="transcriptList" aria-label="Transcripción del audio"></div>
+    </section>
+
+  </div>
+
+  <!-- Resultado con IA -->
+  <section class="panel result-panel" aria-label="Resultado con IA">
+    <div class="result-head">
+      <div>
+        <h2>🤖 Resultado con IA — <span id="resultTitle">—</span></h2>
+        <p class="panel-sub">Resumen, acuerdos y tareas extraídos del audio. Marca las tareas al completarlas y los indicadores de arriba se actualizan solos.</p>
+      </div>
+      <button type="button" class="btn-primary btn-amber" id="btnCopySummary">📋 Copiar resumen</button>
+    </div>
+
+    <div class="result-cols">
+      <div class="result-col">
+        <h3>Resumen</h3>
+        <ul class="bullet-list" id="summaryList"></ul>
+      </div>
+      <div class="result-col">
+        <h3>Acuerdos</h3>
+        <ul class="bullet-list" id="agreementsList"></ul>
+      </div>
+      <div class="result-col">
+        <h3>Tareas extraídas</h3>
+        <ul class="task-list" id="tasksList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="columns bottom-cols">
+
+    <!-- Nueva nota simulada -->
+    <section class="panel note-panel" aria-label="Procesar una nota nueva">
+      <h2>✍ Procesar una nota nueva</h2>
+      <p class="panel-sub">Simula que acabas de grabar un audio: escribe o pega el texto como si fuera su transcripción y la «IA» de la demo generará el resumen y extraerá las tareas (frases con «debe», «hay que», «tiene que» o verbos de acción, con responsable y fecha si aparecen).</p>
+      <div class="form-error" id="noteError"></div>
+      <form id="noteForm" novalidate>
+        <div class="inline-form">
+          <div class="field">
+            <label for="noteType">Tipo de audio</label>
+            <select id="noteType">
+              <option value="Nota de voz">Nota rápida (nota de voz)</option>
+              <option value="Reunión">Reunión</option>
+              <option value="Visita a cliente">Visita a cliente</option>
+            </select>
+          </div>
+          <div class="field grow">
+            <label for="noteTitle">Título (opcional)</label>
+            <input id="noteTitle" type="text" placeholder="Ej.: Nota: encargo para el proveedor">
+          </div>
+        </div>
+        <div class="field">
+          <label for="noteText">Texto de la «transcripción»</label>
+          <textarea id="noteText" rows="5" placeholder="Ej.: Equipo, el cliente confirmó el pedido. María debe revisar el stock hoy. Hay que enviar la cotización mañana. Jorge tiene que coordinar la entrega el viernes."></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-block">✨ Procesar con IA (simulado)</button>
+      </form>
+    </section>
+
+    <!-- Actividad -->
+    <section class="panel activity-panel" aria-label="Actividad reciente">
+      <h2>Registro de actividad</h2>
+      <div class="activity" aria-live="polite">
+        <ul id="activityList">
+          <li>🟢 El servicio está activo: cada audio nuevo llega ya transcrito, con resumen y tareas.</li>
+        </ul>
+      </div>
+      <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+    </section>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración. El servicio real transcribe tus audios y reuniones en español y te entrega el resumen y las tareas donde trabajas: WhatsApp, correo o tu panel. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

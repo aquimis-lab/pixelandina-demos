@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organizador Familiar — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Organizador Familiar — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: la semana, las tareas, las compras y los gastos de toda la familia en un solo lugar.</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- Barra de la familia / filtro -->
+  <section class="family-bar" aria-label="Familia y filtro por miembro">
+    <div class="family-title">
+      <span class="family-emoji" aria-hidden="true">🏠</span>
+      <div>
+        <strong>Familia Demo</strong>
+        <span class="family-sub">4 miembros · Toca un nombre para ver solo su semana</span>
+      </div>
+    </div>
+    <div class="filters" id="memberFilters" role="group" aria-label="Filtrar por miembro"></div>
+  </section>
+
+  <!-- Semana -->
+  <section class="card week-card" aria-label="Semana de la familia">
+    <div class="card-head">
+      <h2>📅 Semana de la familia</h2>
+      <span class="card-note" id="weekNote"></span>
+    </div>
+    <div class="week-grid" id="weekGrid"></div>
+
+    <form class="add-form" id="eventForm">
+      <span class="add-label">➕ Agregar evento:</span>
+      <select id="eventDay" aria-label="Día del evento">
+        <option value="0">Lunes</option>
+        <option value="1">Martes</option>
+        <option value="2">Miércoles</option>
+        <option value="3">Jueves</option>
+        <option value="4">Viernes</option>
+        <option value="5">Sábado</option>
+        <option value="6">Domingo</option>
+      </select>
+      <input type="time" id="eventTime" value="16:00" aria-label="Hora del evento">
+      <input type="text" id="eventTitle" placeholder="¿Qué hay que hacer?" maxlength="60" required aria-label="Nombre del evento">
+      <select id="eventMember" aria-label="Miembro del evento"></select>
+      <button type="submit" class="btn-add">Agregar</button>
+    </form>
+  </section>
+
+  <div class="two-cols">
+
+    <!-- Tareas del hogar -->
+    <section class="card" aria-label="Tareas del hogar">
+      <div class="card-head">
+        <h2>🧹 Tareas del hogar</h2>
+        <span class="card-note" id="taskProgress"></span>
+      </div>
+      <ul class="task-list" id="taskList"></ul>
+      <form class="add-form" id="taskForm">
+        <input type="text" id="taskTitle" placeholder="Nueva tarea…" maxlength="60" required aria-label="Nombre de la tarea">
+        <select id="taskMember" aria-label="Responsable de la tarea"></select>
+        <button type="submit" class="btn-add">Agregar</button>
+      </form>
+    </section>
+
+    <!-- Lista de compras -->
+    <section class="card" aria-label="Lista de compras compartida">
+      <div class="card-head">
+        <h2>🛒 Lista de compras</h2>
+        <span class="card-note" id="shopProgress"></span>
+      </div>
+      <ul class="shop-list" id="shopList"></ul>
+      <form class="add-form" id="shopForm">
+        <input type="text" id="shopTitle" placeholder="Agregar un producto…" maxlength="50" required aria-label="Producto a agregar">
+        <button type="submit" class="btn-add">Agregar</button>
+      </form>
+      <p class="mini-hint">Toca un producto para tacharlo cuando ya esté en el carrito.</p>
+    </section>
+
+  </div>
+
+  <!-- Gastos del mes -->
+  <section class="card" aria-label="Gastos del mes">
+    <div class="card-head">
+      <h2>💵 Gastos del mes</h2>
+      <span class="card-note">Quién pagó qué, y cuánto lleva cada uno</span>
+    </div>
+    <div class="expenses-wrap">
+      <div class="table-wrap">
+        <table class="exp-table">
+          <thead>
+            <tr><th>Concepto</th><th>Pagó</th><th class="num">Monto</th><th></th></tr>
+          </thead>
+          <tbody id="expBody"></tbody>
+          <tfoot>
+            <tr><td colspan="2"><strong>Total del mes</strong></td><td class="num"><strong id="expTotal">$0.00</strong></td><td></td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="split" id="expSplit" aria-label="Reparto por persona"></div>
+    </div>
+    <form class="add-form" id="expForm">
+      <span class="add-label">➕ Agregar gasto:</span>
+      <input type="text" id="expConcept" placeholder="Concepto (ej.: Gas)" maxlength="50" required aria-label="Concepto del gasto">
+      <input type="number" id="expAmount" placeholder="Monto $" min="0.01" step="0.01" required aria-label="Monto del gasto">
+      <select id="expMember" aria-label="Quién pagó"></select>
+      <button type="submit" class="btn-add">Agregar</button>
+    </form>
+  </section>
+
+  <div class="reset-row">
+    <p class="hint">👆 Prueba todo: filtra por miembro, marca tareas, tacha compras y agrega gastos. Los totales se actualizan solos.</p>
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración de una familia ficticia. El organizador real se adapta a tu familia, con aviso a cada miembro en su celular. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
