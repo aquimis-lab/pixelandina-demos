@@ -1,0 +1,5 @@
+:HL["/pixelandina-demos/panel-rrhh/_next/static/chunks/41-xo-gj854ui.css","style"]
+:HL["/pixelandina-demos/panel-rrhh/_next/static/chunks/28lab_rnjm4x7.css","style"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"/_not-found","h":96,"c":"$Q2"}]]
+0:{"b":"D8IMaEgR4IfmjjU7zSMyZ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
