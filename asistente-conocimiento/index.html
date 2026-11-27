@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asistente Interno de Conocimiento — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Asistente Interno de Conocimiento — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: el equipo pregunta y el asistente responde buscando en los documentos internos de la empresa — siempre con la fuente citada. Si algo no está en los documentos, lo dice en vez de inventar.</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- Panel izquierdo: el chat -->
+  <section class="chat-panel" aria-label="Chat con el asistente interno">
+    <div class="chat-card">
+      <div class="chat-header">
+        <div class="avatar" aria-hidden="true">A</div>
+        <div class="chat-header-info">
+          <strong>Asistente interno — Comercial Vega · Demo</strong>
+          <span class="status"><span class="dot"></span> Responde desde los documentos de la empresa</span>
+        </div>
+        <span class="chat-badge" aria-hidden="true">Interno</span>
+      </div>
+
+      <div class="chat-body" id="chatBody" aria-live="polite"></div>
+
+      <div class="chips" id="chipsWrap" aria-label="Preguntas frecuentes"></div>
+
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="Escribe tu pregunta… (ej.: ¿cuánto es el viático a Quito?)" autocomplete="off">
+        <button type="button" class="btn-send" id="btnSend">Preguntar</button>
+      </div>
+    </div>
+    <p class="hint">👆 Prueba las preguntas de ejemplo y también una que NO esté en los documentos (por ejemplo, el sueldo del gerente): el asistente responde con honestidad en vez de inventar.</p>
+  </section>
+
+  <!-- Panel derecho: documentos y control -->
+  <section class="side-panel" aria-label="Documentos internos y estadísticas">
+    <h2>Documentos cargados</h2>
+    <p class="panel-sub">Estas son las únicas fuentes del asistente. Nada de respuestas «de memoria»: todo sale de aquí.</p>
+    <ul class="docs" id="docsList"></ul>
+
+    <div class="kpis">
+      <div class="kpi">
+        <span class="kpi-label">Preguntas hechas</span>
+        <span class="kpi-value" id="statTotal">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Respondidas con fuente</span>
+        <span class="kpi-value" id="statOk">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Sin respuesta en documentos</span>
+        <span class="kpi-value" id="statMiss">0</span>
+      </div>
+    </div>
+    <p class="panel-sub">Las preguntas sin respuesta le muestran a la empresa qué documentos faltan por cargar o actualizar.</p>
+
+    <button class="btn-reset" id="btnReset" type="button">↺ Reiniciar la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Empresa, documentos y respuestas 100% ficticios, creados solo para esta demostración. El asistente real se conecta a los documentos verdaderos de tu empresa y se limita a ellos. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

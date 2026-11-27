@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Un Solo Número — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Dashboard «Un Solo Número» — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: el panel que un gerente sí abre. Una sola cifra confiable — las ventas del mes contra su meta — y solo los indicadores que la explican.</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- EL número -->
+  <section class="hero" aria-label="Ventas del mes">
+    <p class="hero-eyebrow">Distribuidora Pacífico · Demo — Ventas de noviembre</p>
+    <p class="hero-number" id="bigNumber">$0</p>
+    <p class="hero-meta" id="metaLine">Meta del mes: —</p>
+    <div class="progress" role="img" aria-label="Avance hacia la meta">
+      <div class="progress-fill" id="progressBar" style="width:0%"></div>
+    </div>
+    <p class="hero-ritmo" id="ritmoLine"></p>
+    <div class="hero-actions">
+      <button type="button" class="btn-primary" id="btnAddSale">＋ Registrar venta de hoy (simulada)</button>
+      <button type="button" class="btn-ghost" id="btnReset">↺ Reiniciar demo</button>
+    </div>
+    <p class="hero-hint">👆 Registra ventas y mira cómo EL número — y todo lo demás — se actualiza en vivo. Así trabaja el panel real, conectado a las ventas del negocio.</p>
+  </section>
+
+  <!-- Indicadores secundarios: solo 5 -->
+  <section class="grid" aria-label="Indicadores secundarios">
+    <article class="card">
+      <h2>Ventas por semana</h2>
+      <div class="weeks" id="weeksWrap"></div>
+      <p class="card-note">La semana 4 va en curso (días 22 al 24 cerrados).</p>
+    </article>
+
+    <article class="card">
+      <h2>Ticket promedio</h2>
+      <p class="card-big" id="ticketValue">$0</p>
+      <p class="card-note" id="ticketSub">—</p>
+    </article>
+
+    <article class="card">
+      <h2>Mejor vendedor</h2>
+      <p class="card-name" id="sellerValue">—</p>
+      <p class="card-note" id="sellerSub">—</p>
+    </article>
+
+    <article class="card">
+      <h2>Producto top</h2>
+      <p class="card-name" id="productValue">—</p>
+      <p class="card-note" id="productSub">—</p>
+    </article>
+
+    <article class="card card-wide">
+      <h2>Alertas — solo las que importan</h2>
+      <ul class="alerts" id="alertsList"></ul>
+    </article>
+  </section>
+
+  <!-- La idea de venta -->
+  <section class="pitch" aria-label="Por qué un solo número">
+    <h2>¿Por qué un solo número?</h2>
+    <p>Los gerentes abandonan los tableros llenos de gráficos: nadie tiene tiempo de cruzar diez pantallas para saber si el mes va bien o mal, y un solo dato equivocado hace que no lo vuelvan a abrir. Este panel hace lo contrario: <strong>una cifra en la que se puede confiar</strong>, su meta al lado, y debajo únicamente lo que la explica — cómo va la semana, el ticket, quién vende más, qué producto manda y qué necesita atención hoy.</p>
+    <p>Se conecta a las ventas reales del negocio y se actualiza solo. Si EL número está bien, no hay nada más que mirar.</p>
+  </section>
+
+  <section class="activity" aria-label="Actividad reciente">
+    <h2>Actividad reciente</h2>
+    <ul id="activityList">
+      <li>🟢 Panel activo: un solo número, actualizado con cada venta registrada.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos 100% ficticios y ventas simuladas: ninguna cifra corresponde a una empresa real. El panel real se conecta a las ventas del negocio y se actualiza automáticamente. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
