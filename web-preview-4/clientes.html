@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clientes: tu proyecto en vivo y nuestro compromiso — PixelAndina</title>
+<meta name="description" content="Panel privado de clientes de PixelAndina: el estado de tu proyecto paso a paso, los avances para revisar y el soporte directo, en un solo lugar. Y nuestro compromiso: entrega en 1 semana o menos, pago 40/60 por transferencia y precio cerrado por escrito.">
+<link rel="icon" href="https://pixelandina.online/assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/escena.css">
+<style>
+/* Panel de clientes: barra de pasos, hilo de soporte y avances.
+   Solo lo que styles.css no trae; todo lo demás reusa el v3. */
+.psteps{display:flex;margin:24px 0 8px}
+.pstep{flex:1;text-align:center;position:relative;padding-top:24px;font-size:12.5px;color:var(--mut)}
+.pstep::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:15px;height:15px;border-radius:50%;background:#ffffff;border:2px solid var(--line-2);z-index:1}
+.pstep::after{content:"";position:absolute;top:14px;left:calc(-50% + 11px);right:calc(50% + 11px);height:2px;background:var(--line-2)}
+.pstep:first-child::after{display:none}
+.pstep.done{color:var(--green-xl);font-weight:580}
+.pstep.done::before{background:var(--green-l);border-color:var(--green-l)}
+.pstep.done::after{background:var(--green-l)}
+.pstep.now{color:var(--amber-l);font-weight:650}
+.pstep.now::before{border-color:var(--amber);background:#fdf3e3;box-shadow:0 0 0 5px rgba(217,119,6,.15)}
+.hilo{display:flex;flex-direction:column;gap:10px;max-height:440px;overflow-y:auto;padding:6px 2px}
+.msg .mf{display:block;font-size:11px;opacity:.75;margin-top:5px}
+.av-list{display:grid;gap:12px}
+.av-item{border:1px solid var(--line);border-radius:var(--radius-s);padding:16px 18px;background:#ffffff;box-shadow:var(--sh-sm)}
+.av-item h4{font-size:15.5px;margin-bottom:4px}
+.av-item p{color:var(--sub);font-size:14.5px}
+.av-item .av-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px}
+@media (max-width:680px){.pstep{font-size:10.5px}}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="head-in">
+    <a class="brand" href="index.html"><img src="https://pixelandina.online/assets/img/logo.png" alt="Logo de PixelAndina"><span>Pixel<em>Andina</em></span></a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="demos.html">Demos</a>
+      <a href="tienda.html">Tienda digital</a>
+      <a href="corporativo.html">Empresas</a>
+      <a href="ideas.html">Ideas para ti</a>
+            <a href="portafolio.html">Nuestro trabajo</a>
+      <a href="clientes.html" class="solo-movil">Ingreso de clientes</a>
+    </nav>
+    <div class="head-cta"><a class="btn btn-ghost btn-sm" href="clientes.html">Ingreso de clientes</a><a class="btn btn-white btn-sm" href="ventas.html">Comunícate con ventas</a></div>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:56px">
+  <div class="glow"></div><div class="gridbg"></div>
+  <div class="wrap">
+    <span class="pill"><span class="dot"></span> Clientes · Panel privado y compromiso PixelAndina</span>
+    <h1 style="font-size:clamp(34px,4.6vw,52px)">Tu proyecto, <span class="grad">en vivo y en un solo lugar</span></h1>
+    <p class="lead">Si ya eres cliente, entra a tu panel privado: el estado de tu pedido paso a paso, los avances para revisar y el soporte directo con PixelAndina. Y si aún no lo eres, aquí está también nuestro compromiso, por escrito.</p>
+  </div>
+    <div class="esc-fcard-static rv" style="max-width:560px;margin:30px auto 0" aria-hidden="true">
+      <div class="fc-head" style="display:flex;align-items:center;gap:9px;margin-bottom:6px">
+        <span class="esc-ic panel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+        <span class="esc-app">Tu panel de cliente</span>
+        <span class="esc-time">En vivo, cuando quieras</span>
+      </div>
+      <h4>Así verás el avance de tu proyecto</h4>
+      <div class="esc-steps" style="margin-top:12px">
+        <div class="esc-step done"><span class="dotp">✓</span><span>Recibido</span></div>
+        <div class="esc-step done"><span class="dotp">✓</span><span>En diseño</span></div>
+        <div class="esc-step active"><span class="dotp">3</span><span>En desarrollo</span></div>
+        <div class="esc-step"><span class="dotp">4</span><span>En revisión</span></div>
+        <div class="esc-step"><span class="dotp">5</span><span>Entregado</span></div>
+      </div>
+      <span class="esc-sim">Ejemplo: el estado se actualiza en tu panel en cada avance</span>
+    </div>
+</section>
+
+<!-- ============ PANEL DE CLIENTES ============ -->
+<section class="sec" style="padding-top:48px" id="panel">
+  <div class="wrap">
+    <!-- Ingreso (sin sesión) -->
+    <div class="lock-box" id="lockBox">
+      <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+      <h2 style="font-size:24px;margin-bottom:8px">Panel de clientes</h2>
+      <p class="small" style="font-size:14px">Espacio privado para clientes de PixelAndina: el estado de tu pedido, los avances para revisar y el soporte directo, todo en un solo lugar.</p>
+      <form id="lockForm">
+        <input type="email" id="loginEmail" placeholder="Tu correo" autocomplete="username" aria-label="Tu correo" style="margin-bottom:10px">
+        <input type="password" id="loginPass" placeholder="Tu contraseña" autocomplete="current-password" aria-label="Tu contraseña">
+        <p class="f-error" id="lockErr"></p>
+        <button type="submit" class="btn btn-amber" style="width:100%">Entrar a mi panel</button>
+      </form>
+      <p class="small" style="margin-top:16px">Tu acceso se activa cuando empieza tu proyecto: te entregamos el correo y la contraseña por WhatsApp. Sin esa sesión, este panel no muestra ningún dato.</p>
+      <div class="form-alt" style="justify-content:center">
+        <p>¿Prefieres escribirnos directo?</p>
+        <a class="btn btn-wa btn-sm" href="https://wa.me/593939462496?text=Hola%20PixelAndina%2C%20soy%20cliente%20y%20quiero%20revisar%20el%20estado%20de%20mi%20proyecto." target="_blank" rel="noopener">WhatsApp +593 93 946 2496</a>
+      </div>
+    </div>
+
+    <!-- Vista del cliente (con sesión) -->
+    <div id="clientView" style="display:none">
+      <div class="admin-bar">
+        <div>
+          <p class="eyebrow" style="margin-bottom:6px">Panel de clientes · Solo tú ves esto</p>
+          <h2 style="font-size:30px">Hola, <span id="cliNombre">cliente</span></h2>
+          <p class="small" style="margin-top:6px">Sesión iniciada como <b style="color:var(--sub)" id="cliEmail"></b> · Todo se actualiza en vivo, sin recargar la página.</p>
+        </div>
+        <div class="admin-tools">
+          <a class="btn btn-wa btn-sm" href="https://wa.me/593939462496?text=Hola%20PixelAndina%2C%20soy%20cliente%20y%20escribo%20desde%20mi%20panel." target="_blank" rel="noopener">WhatsApp directo</a>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnLogout">Cerrar sesión</button>
+        </div>
+      </div>
+
+      <div id="proyWrap"></div>
+
+      <div class="card" style="margin-top:26px"><div class="body">
+        <span class="badge live">Soporte directo</span>
+        <h3>Conversación con PixelAndina</h3>
+        <p>Déjanos aquí tus dudas, cambios o comentarios sobre tu proyecto. Te respondemos en este mismo hilo y también nos tienes por WhatsApp.</p>
+        <div class="hilo" id="hilo" style="margin-top:16px"></div>
+        <form id="supForm" style="margin-top:14px">
+          <div class="f-field" style="margin-bottom:12px">
+            <label for="supMsg">Tu mensaje</label>
+            <textarea id="supMsg" placeholder="Escribe tu mensaje para PixelAndina…" aria-label="Tu mensaje"></textarea>
+          </div>
+          <p class="f-error" id="supErr"></p>
+          <button type="submit" class="btn btn-green">Enviar mensaje</button>
+        </form>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPROMISO ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Nuestro compromiso</p>
+      <h2>Antes de pedirte un dólar: <span class="grad">así trabajamos</span></h2>
+      <p class="lead">Esto es lo que PixelAndina promete a cada cliente — y lo que cumplimos en el primer proyecto que entregamos.</p>
+    </div>
+    <div class="cells c3">
+      <div class="cell">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+        <h3>Entrega en 1 semana o menos</h3>
+        <p>Según el servicio: landing 2 a 3 días, web de negocio 3 a 5 días, ventas por WhatsApp 2 a 4 días y tablero/app 5 a 7 días. Tu tiempo confirmado va por escrito en la propuesta, con avances que revisas sobre la marcha — no esperas a ciegas hasta el final.</p>
+      </div>
+      <div class="cell">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
+        <h3>Pago 40 / 60 por transferencia</h3>
+        <p>40% de anticipo para empezar y 60% restante solo a la entrega, cuando todo está funcionando. Los datos de la cuenta van en tu cotización. No pagas nada antes de ver tu propuesta.</p>
+      </div>
+      <div class="cell">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Garantía de 7 días en digital</h3>
+        <p>Todos los kits y productos de la tienda digital tienen garantía de 7 días gestionada por Hotmart: si no es lo que esperabas, la devolución es directa con la plataforma.</p>
+      </div>
+      <div class="cell">
+        <div class="ic amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
+        <h3>Soporte de $5/mes, sin permanencia</h3>
+        <p>Después de la entrega te acompañamos en el arranque con ajustes incluidos. Si quieres seguir acompañado, el soporte mensual cuesta $5/mes con ajustes menores y ayuda por WhatsApp y correo — sin permanencia obligatoria.</p>
+      </div>
+      <div class="cell">
+        <div class="ic amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7M9 8h3"/></svg></div>
+        <h3>Precio cerrado, sin letra pequeña</h3>
+        <p>Alcance, precio y tiempo van por escrito antes de empezar. Lo que no esté en el alcance se cotiza aparte como encargo nuevo, también con precio cerrado: nunca aparece un cobro sorpresa.</p>
+      </div>
+      <div class="cell">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5"/><path d="M16 4.5a3.4 3.4 0 0 1 0 7M17.5 14.6c1.9.5 3.2 1.9 3.7 4.4"/></svg></div>
+        <h3>Trato directo y capacitación</h3>
+        <p>Hablas con personas, no con un ticket frío: atendemos lunes a sábado de 9:00 a 18:00 por WhatsApp y correo. Y cada entrega incluye una capacitación corta para que uses tu sistema desde el primer día.</p>
+      </div>
+    </div>
+    <p class="fig">Fig. 04 — Las seis promesas que rigen cada proyecto de PixelAndina</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">La prueba</p>
+      <h2>Ya lo cumplimos una vez, <span class="grad">y quedó en línea</span></h2>
+      <p class="lead">El Clóset de las 3 hermanas recibió su tienda y su panel en su propio dominio, aprobó cada etapa sobre la marcha y el proyecto quedó pagado en su totalidad. Así trabajamos con cada cliente.</p>
+    </div>
+    <div class="case-grid rv">
+      <div class="case-img"><img src="https://pixelandina.online/assets/img/caso.jpg" alt="Publicación del lanzamiento de la tienda El Clóset de las 3 hermanas"></div>
+      <div>
+        <div><span class="badge live">Entregado</span> <span class="badge">Tienda + panel</span></div>
+        <h3 style="font-size:24px;margin:14px 0 10px">El Clóset de las 3 hermanas</h3>
+        <div class="kv">
+          <div><b>Lo que pidieron</b><p>Vender en línea sin perder el control de quién vende qué: catálogo por categorías, ofertas, carrito con pedido por WhatsApp y apartado.</p></div>
+          <div><b>Lo que entregamos</b><p>Tienda pública en su propio dominio + panel privado para las 3 socias, con ventas compartidas que se reparten solas y corte semanal por hermana.</p></div>
+          <div><b>El resultado</b><p>Proyecto entregado y pagado en su totalidad, con la tienda funcionando hoy.</p></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-white" href="https://elclosetdelas3hermanas.online/" target="_blank" rel="noopener">Visitar la tienda real</a>
+          <a class="btn btn-ghost" href="portafolio.html">Ver el caso completo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="cells c2 rv">
+      <div class="cell">
+        <span class="badge">Tu información</span>
+        <h3 style="margin-top:14px">Tus datos son tuyos</h3>
+        <p>Textos, fotos y datos de tu negocio se usan solo para tu proyecto. En integraciones con sistemas de tu empresa, las credenciales siempre quedan en manos de tu empresa: PixelAndina nunca se queda con tus claves.</p>
+        <a class="more" href="ventas.html">Hablar con ventas →</a>
+      </div>
+      <div class="cell">
+        <span class="badge amber">Sin panel, también te atendemos</span>
+        <h3 style="margin-top:14px">Seguimiento por WhatsApp y correo</h3>
+        <p>Si prefieres no usar el panel, el seguimiento de tu proyecto lo hacemos como siempre: por WhatsApp y correo, con respuesta personal de lunes a sábado, de 9:00 a 18:00.</p>
+        <a class="more" href="https://wa.me/593939462496" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="border-top:none;padding-top:0">
+  <div class="wrap">
+    <div class="cta-band rv">
+      <h2>Así de claro trabajamos. ¿Empezamos?</h2>
+      <p>Déjanos tu solicitud en el formulario de ventas y te respondemos el mismo día con tu propuesta y precio cerrado.</p>
+      <div class="row">
+        <a class="btn btn-white btn-lg" href="ventas.html">Comunícate con ventas</a>
+        <a class="btn btn-ghost btn-lg" href="demos.html">Probar los demos primero</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><img src="https://pixelandina.online/assets/img/logo.png" alt="Logo de PixelAndina"><span>Pixel<em>Andina</em></span></a>
+        <p>Webs, apps, dashboards y productos digitales para negocios y empresas en Ecuador.</p>
+      </div>
+      <div><h4>Servicios</h4><ul>
+        <li><a href="servicios.html">Web para tu negocio</a></li>
+        <li><a href="servicios.html">Ventas por WhatsApp</a></li>
+        <li><a href="servicios.html">Tablero o app a medida</a></li>
+        <li><a href="corporativo.html">Servicios corporativos</a></li>
+        <li><a href="ideas.html">Desarrollos a pedido</a></li>
+      </ul></div>
+      <div><h4>Tienda digital</h4><ul>
+        <li><a href="tienda.html">Sistema Operativo Pyme · $39</a></li>
+        <li><a href="tienda.html">Kit RR. HH. digital · $19</a></li>
+        <li><a href="tienda.html">Kit Formalízate — RIMPE · $24</a></li>
+        <li><a href="tienda.html">Kit Educativo · $15</a></li>
+        <li><a href="tienda.html">Cursos</a></li>
+      </ul></div>
+      <div><h4>Recursos</h4><ul>
+        <li><a href="demos.html">17 demos en vivo</a></li>
+        <li><a href="portafolio.html">Nuestro trabajo y caso real</a></li>
+        <li><a href="clientes.html">Compromiso con clientes</a></li>
+        <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+        <li><a href="ventas.html">Comunícate con ventas</a></li>
+      </ul></div>
+      <div><h4>Contacto</h4><ul>
+        <li><a href="mailto:ventas@pixelandina.online">ventas@pixelandina.online</a></li>
+        <li><a href="https://wa.me/593939462496" target="_blank" rel="noopener">WhatsApp +593 93 946 2496</a></li>
+        <li><a href="ventas.html">Guayaquil, Ecuador</a></li>
+        <li><a href="ventas.html">Lun a sáb · 9:00 a 18:00</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 PixelAndina</span>
+      <span>Hecho en Guayaquil, Ecuador · PixelAndina</span>
+      <span><a href="acceso-interno.html">Acceso interno</a></span>
+    </div>
+  </div>
+</footer>
+
+
+<button class="chat-btn" id="chatBtn" aria-expanded="false" aria-controls="chatPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Asistente</button>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Asistente de PixelAndina">
+  <div class="chat-head"><div><b>Asistente de PixelAndina</b><span>Respuestas automáticas y guiadas · no es una persona ni una IA en vivo</span></div><button class="chat-close" id="chatClose" aria-label="Cerrar asistente">✕</button></div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-chips" id="chatChips"></div>
+  <form class="chat-form" id="chatForm"><input id="chatInput" type="text" placeholder="Escribe tu duda…" autocomplete="off" aria-label="Escribe tu duda"><button type="submit">Enviar</button></form>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="assets/firebase-config.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/chat.js"></script>
+<script src="assets/clientes.js"></script>
+<script src="assets/escena.js"></script>
+</body>
+</html>

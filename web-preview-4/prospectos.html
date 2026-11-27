@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prospectos · Vista interna — PixelAndina</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="https://pixelandina.online/assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="site-head">
+  <div class="head-in">
+    <a class="brand" href="index.html"><img src="https://pixelandina.online/assets/img/logo.png" alt="Logo de PixelAndina"><span>Pixel<em>Andina</em></span></a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="demos.html">Demos</a>
+      <a href="tienda.html">Tienda digital</a>
+      <a href="corporativo.html">Empresas</a>
+      <a href="ideas.html">Ideas para ti</a>
+            <a href="portafolio.html">Nuestro trabajo</a>
+      <a href="clientes.html" class="solo-movil">Ingreso de clientes</a>
+    </nav>
+    <div class="head-cta"><a class="btn btn-ghost btn-sm" href="ventas.html">Ver el formulario</a></div>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:64px;min-height:70vh">
+  <div class="wrap">
+    <!-- Acceso de administrador (Firebase Auth) -->
+    <div class="lock-box" id="lockBox">
+      <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+      <h2 style="font-size:24px;margin-bottom:8px">Repositorio de prospectos</h2>
+      <p class="small" style="font-size:14px">Vista interna de PixelAndina: aquí llegan las solicitudes del formulario «Comunícate con ventas», con su origen. Acceso solo para Anthony.</p>
+      <form id="lockForm">
+        <input type="email" id="loginEmail" placeholder="Tu correo" autocomplete="username" aria-label="Tu correo" style="margin-bottom:10px">
+        <input type="password" id="loginPass" placeholder="Tu contraseña" autocomplete="current-password" aria-label="Tu contraseña">
+        <p class="f-error" id="lockErr"></p>
+        <button type="submit" class="btn btn-amber" style="width:100%">Entrar</button>
+      </form>
+      <p class="small" style="margin-top:16px">Acceso con el correo y la contraseña de administrador de PixelAndina. Sin esa sesión, esta vista no muestra ningún dato.</p>
+    </div>
+
+    <!-- Vista interna -->
+    <div id="adminView" style="display:none">
+      <div class="admin-bar">
+        <div>
+          <p class="eyebrow amber" style="margin-bottom:6px">Vista interna · Solo Anthony</p>
+          <h2 style="font-size:30px">Prospectos que llegaron por la web</h2>
+          <p class="small" style="margin-top:6px">Cada solicitud guarda quién es, qué necesita y <b style="color:var(--sub)">de dónde llegó</b>: página de entrada, referente/UTM, fecha y hora y dispositivo.</p>
+        </div>
+        <div class="admin-tools">
+          <button type="button" class="btn btn-ghost btn-sm" id="btnCsv">Exportar CSV</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnLogout">Cerrar sesión</button>
+          <a class="btn btn-white btn-sm" href="ventas.html">Probar el formulario</a>
+        </div>
+      </div>
+      <div class="pstat">
+        <div><b id="stTotal">0</b><span>solicitudes en total</span></div>
+        <div><b id="stHoy">0</b><span>llegaron hoy</span></div>
+        <div><b id="stNuevos">0</b><span>sin contactar</span></div>
+        <div><b id="stMovil">0</b><span>desde el celular</span></div>
+      </div>
+      <div class="prosp">
+        <div class="tbl-wrap" id="tblWrap" style="display:none">
+          <table>
+            <thead><tr><th>Quién</th><th>Qué necesita</th><th>Mensaje</th><th>Origen</th><th>Cuándo · Dispositivo</th><th>Estado</th></tr></thead>
+            <tbody id="prospBody"></tbody>
+          </table>
+        </div>
+        <div class="empty-box" id="emptyBox">
+          <p style="font-size:16px;color:var(--sub);margin-bottom:8px">Todavía no hay solicitudes.</p>
+          <p>Cuando alguien envíe el formulario de ventas, su solicitud aparecerá aquí con todos sus datos de origen.</p>
+          <p style="margin-top:16px"><a class="btn btn-white btn-sm" href="ventas.html">Ir al formulario de ventas</a></p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:16px">Datos en vivo: esta vista lee la base de datos real de prospectos de PixelAndina y solo se abre con tu sesión de administrador.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="border-top:none;padding-top:0">
+      <span>© 2026 PixelAndina · Vista interna</span>
+      <span>Hecho en Guayaquil, Ecuador · PixelAndina</span>
+      <span><a href="acceso-interno.html">Acceso interno</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="assets/firebase-config.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/prospectos.js"></script>
+</body>
+</html>

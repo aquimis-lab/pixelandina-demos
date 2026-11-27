@@ -1,0 +1,125 @@
+/* ============================================================
+   PixelAndina · Escenas 3D realistas (v4)
+   Componentes compartidos: marco de navegador, paneles y tarjetas
+   flotantes con profundidad, estilo Stripe. Fondo siempre blanco.
+   Prefijo esc- para no chocar con assets/styles.css.
+   ============================================================ */
+.esc-scene{position:relative;max-width:1060px;margin:46px auto 0;padding:10px 30px 78px;perspective:1400px}
+.esc-scene.narrow{max-width:920px}
+.esc-halo{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:88%;height:74%;border-radius:50%;pointer-events:none;background:
+  radial-gradient(closest-side, rgba(46,158,91,.16), transparent 70%),
+  radial-gradient(closest-side at 78% 30%, rgba(245,158,11,.15), transparent 70%);filter:blur(6px)}
+.esc-floor{position:absolute;left:50%;bottom:40px;transform:translateX(-50%);width:72%;height:44px;border-radius:50%;background:radial-gradient(closest-side, rgba(13,38,22,.30), transparent 72%);filter:blur(10px);pointer-events:none}
+.esc-tilt{position:relative;transform-style:preserve-3d;transition:transform .35s ease-out;will-change:transform}
+
+/* --- Marco de navegador realista --- */
+.esc-browser{position:relative;border-radius:18px;background:#fff;border:1px solid var(--line-2,rgba(14,31,20,.16));box-shadow:0 30px 60px -18px rgba(13,38,22,.28),0 12px 24px -12px rgba(13,38,22,.18);overflow:hidden}
+.esc-bar{display:flex;align-items:center;gap:12px;padding:11px 16px;background:linear-gradient(#FBFCFB,#F3F6F3);border-bottom:1px solid var(--line,rgba(14,31,20,.09))}
+.esc-dots{display:flex;gap:7px;flex:none}
+.esc-dots i{width:11px;height:11px;border-radius:50%;display:block}
+.esc-dots i:nth-child(1){background:#FF5F57}.esc-dots i:nth-child(2){background:#FEBC2E}.esc-dots i:nth-child(3){background:#28C840}
+.esc-live{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--green-l,#1D7A43);flex:none}
+.esc-live i{width:7px;height:7px;border-radius:50%;background:var(--green-xl,#2E9E5B);animation:escPulse 1.8s infinite}
+@keyframes escPulse{0%{box-shadow:0 0 0 0 rgba(46,158,91,.45)}70%{box-shadow:0 0 0 7px rgba(46,158,91,0)}100%{box-shadow:0 0 0 0 rgba(46,158,91,0)}}
+.esc-url{flex:1;max-width:430px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:7px;background:#fff;border:1px solid var(--line,rgba(14,31,20,.09));border-radius:8px;padding:5px 12px;font-size:12.5px;color:var(--sub,#5B6B60);font-weight:500;box-shadow:inset 0 1px 2px rgba(13,38,22,.05)}
+.esc-frame{position:relative;height:520px;overflow:hidden;background:#F6EFE9 center/cover no-repeat}
+.esc-frame.short{height:400px}
+.esc-frame iframe{position:absolute;top:0;left:0;width:150%;height:150%;border:0;transform:scale(.6667);transform-origin:top left;pointer-events:none;background:#fff}
+
+/* --- Panel principal (sin iframe): dashboards realistas --- */
+.esc-panel{position:relative;border-radius:18px;background:#fff;border:1px solid var(--line-2,rgba(14,31,20,.16));box-shadow:0 30px 60px -18px rgba(13,38,22,.28),0 12px 24px -12px rgba(13,38,22,.18);padding:26px 28px;text-align:left}
+.esc-panel .esc-p-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.esc-panel .esc-p-head b{font-size:15px;color:var(--ink,#0E1F14)}
+.esc-panel .esc-p-head .esc-live{margin-left:auto}
+.esc-big{font-size:clamp(38px,4.6vw,52px);font-weight:800;letter-spacing:-.03em;color:var(--ink,#0E1F14);line-height:1;font-variant-numeric:tabular-nums}
+.esc-big-sub{font-size:13.5px;color:var(--sub,#5B6B60);margin-top:6px}
+.esc-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.esc-kpi{border:1px solid var(--line,rgba(14,31,20,.09));border-radius:12px;padding:13px 14px;background:#fff;box-shadow:0 4px 12px -6px rgba(13,38,22,.12)}
+.esc-kpi b{display:block;font-size:20px;color:var(--ink,#0E1F14);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.esc-kpi span{font-size:11.8px;color:var(--sub,#5B6B60)}
+
+/* --- Tarjetas flotantes realistas --- */
+.esc-fcard{position:absolute;background:#fff;border:1px solid var(--line,rgba(14,31,20,.09));border-radius:14px;box-shadow:0 18px 36px -14px rgba(13,38,22,.25),0 6px 14px -8px rgba(13,38,22,.14);padding:14px 16px;z-index:5;text-align:left}
+.esc-fcard .fc-head{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.esc-fcard h4{font-size:14.5px;color:var(--ink,#0E1F14);letter-spacing:-.01em}
+.esc-fcard p{font-size:12.8px;color:var(--sub,#5B6B60);line-height:1.45}
+.esc-app{font-size:11px;font-weight:600;color:var(--sub,#5B6B60);letter-spacing:.02em}
+.esc-time{margin-left:auto;font-size:11px;color:#9AA79E}
+.esc-ic{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.esc-ic.wa{background:linear-gradient(145deg,#2BE07C,#12A94B)}
+.esc-ic.panel{background:linear-gradient(145deg,#1D7A43,#14532D)}
+.esc-ic.ok{background:linear-gradient(145deg,#2E9E5B,#1D7A43)}
+.esc-ic.mail{background:linear-gradient(145deg,#F59E0B,#D97706)}
+.esc-ic.alert{background:linear-gradient(145deg,#FBBF24,#D97706)}
+.esc-ic.shield{background:linear-gradient(145deg,#2E9E5B,#14532D)}
+.pos-tr{top:30px;right:0;width:308px;transform:translateZ(70px)}
+.pos-bl{left:0;bottom:2px;width:322px;transform:translateZ(90px)}
+.pos-br{right:26px;bottom:-6px;width:272px;transform:translateZ(55px)}
+.float-a{animation:escFloat 7s ease-in-out infinite alternate}
+.float-b{animation:escFloat 8.5s ease-in-out infinite alternate-reverse}
+.float-c{animation:escFloat 6.2s ease-in-out infinite alternate}
+@keyframes escFloat{from{margin-top:0}to{margin-top:-10px}}
+
+/* Tarjeta flotante en flujo normal (clientes / ventas) */
+.esc-fcard-static{position:relative;background:#fff;border:1px solid var(--line,rgba(14,31,20,.09));border-radius:14px;box-shadow:0 18px 36px -14px rgba(13,38,22,.25),0 6px 14px -8px rgba(13,38,22,.14);padding:16px 18px;text-align:left}
+.esc-fcard-static h4{font-size:14.5px;color:var(--ink,#0E1F14)}
+.esc-fcard-static p{font-size:12.8px;color:var(--sub,#5B6B60);line-height:1.45}
+
+/* --- Rotador de notificaciones --- */
+.esc-rot-item{display:none}
+.esc-rot-item.on{display:block;animation:escIn .35s ease}
+@keyframes escIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* --- Filas tipo panel (corte semanal) --- */
+.esc-sister{display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:10px;padding:7px 0}
+.esc-sister + .esc-sister{border-top:1px dashed var(--line,rgba(14,31,20,.09))}
+.esc-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:#fff;box-shadow:inset 0 -2px 4px rgba(0,0,0,.18)}
+.av-l{background:linear-gradient(145deg,#8B5CF6,#6D28D9)} .av-s{background:linear-gradient(145deg,#EC4899,#BE185D)} .av-m{background:linear-gradient(145deg,#F59E0B,#B45309)}
+.esc-sister .who b{display:block;font-size:13px;color:var(--ink,#0E1F14);font-weight:600}
+.esc-pbar{height:6px;border-radius:99px;background:#EEF2EE;margin-top:5px;overflow:hidden;width:150px}
+.esc-pbar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--green-l,#1D7A43),var(--green-xl,#2E9E5B));transition:width 1.4s cubic-bezier(.22,.8,.3,1)}
+.esc-sister .amt{font-size:13.5px;font-weight:700;color:var(--ink,#0E1F14);font-variant-numeric:tabular-nums}
+.esc-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line,rgba(14,31,20,.09));margin-top:9px;padding-top:9px}
+.esc-total b{font-size:17px;color:var(--green,#14532D)}
+.esc-sim{display:inline-block;margin-top:8px;font-size:10.5px;font-weight:600;color:#8A978D;background:#F1F5F1;border-radius:6px;padding:3px 7px;letter-spacing:.02em}
+.esc-cap{text-align:center;margin-top:4px;font-size:12.5px;color:#8A978D}
+.esc-done-row{display:flex;align-items:center;gap:11px}
+.esc-done-row .amt2{font-size:12.8px;color:var(--sub,#5B6B60);line-height:1.45}
+
+/* --- Pasos de avance de proyecto --- */
+.esc-steps{display:flex;align-items:flex-start;gap:0;margin-top:8px}
+.esc-step{flex:1;text-align:center;position:relative;padding:0 2px}
+.esc-step::before{content:"";position:absolute;top:13px;left:-50%;width:100%;height:2px;background:#E3EAE3}
+.esc-step:first-child::before{display:none}
+.esc-step .dotp{position:relative;z-index:1;width:27px;height:27px;margin:0 auto;border-radius:50%;background:#EEF2EE;color:#8A978D;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid #E3EAE3;transition:.4s}
+.esc-step span{display:block;margin-top:7px;font-size:11.3px;font-weight:600;color:#8A978D;line-height:1.3}
+.esc-step.done .dotp{background:var(--green-l,#1D7A43);border-color:var(--green-l,#1D7A43);color:#fff}
+.esc-step.done span{color:var(--green,#14532D)}
+.esc-step.done::before{background:var(--green-l,#1D7A43)}
+.esc-step.active .dotp{background:#fff;border-color:var(--amber,#D97706);color:var(--amber,#D97706);box-shadow:0 0 0 5px rgba(217,119,6,.15);animation:escPulseA 1.8s infinite}
+.esc-step.active span{color:var(--ink,#0E1F14)}
+@keyframes escPulseA{0%{box-shadow:0 0 0 0 rgba(217,119,6,.35)}70%{box-shadow:0 0 0 8px rgba(217,119,6,0)}100%{box-shadow:0 0 0 0 rgba(217,119,6,0)}}
+
+/* --- Tarjeta de compra (tienda) --- */
+.esc-buy{display:grid;grid-template-columns:128px 1fr;gap:20px;align-items:center}
+.esc-buy img{border-radius:12px;box-shadow:0 14px 28px -12px rgba(13,38,22,.35);border:1px solid var(--line,rgba(14,31,20,.09))}
+.esc-buy .price{font-size:30px;font-weight:800;color:var(--ink,#0E1F14);letter-spacing:-.02em}
+.esc-buy .price small{font-size:13px;font-weight:600;color:var(--sub,#5B6B60)}
+
+/* --- Móvil: sin inclinación, tarjetas en columna --- */
+@media (max-width:760px){
+  .esc-scene{padding:0 0 6px;margin-top:34px}
+  .esc-frame{height:330px}
+  .esc-frame.short{height:300px}
+  .esc-fcard{position:relative;top:auto;right:auto;left:auto;bottom:auto;width:100%;transform:none;animation:none;margin-top:14px}
+  .esc-floor{display:none}
+  .esc-panel{padding:20px}
+  .esc-kpis{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .esc-kpi b{font-size:16px}
+  .esc-buy{grid-template-columns:96px 1fr;gap:14px}
+  .esc-step span{font-size:10px}
+}
+@media (prefers-reduced-motion: reduce){
+  .esc-fcard,.esc-fcard-static,.esc-live i,.esc-step.active .dotp{animation:none !important}
+  .esc-pbar i{transition:none}
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acceso interno — PixelAndina</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="https://pixelandina.online/assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/escena.css">
+<script defer src="https://umami-pixelandina.vercel.app/script.js" data-website-id="78d59000-011a-4c44-9c90-a9eae71046f2"></script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="head-in">
+    <a class="brand" href="index.html"><img src="https://pixelandina.online/assets/img/logo.png" alt="Logo de PixelAndina"><span>Pixel<em>Andina</em></span></a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="demos.html">Demos</a>
+      <a href="tienda.html">Tienda digital</a>
+      <a href="corporativo.html">Empresas</a>
+      <a href="ideas.html">Ideas para ti</a>
+      <a href="portafolio.html">Nuestro trabajo</a>
+      <a href="clientes.html" class="solo-movil">Ingreso de clientes</a>
+    </nav>
+    <div class="head-cta"><a class="btn btn-ghost btn-sm" href="clientes.html">Ingreso de clientes</a><a class="btn btn-white btn-sm" href="ventas.html">Comunícate con ventas</a></div>
+  </div>
+</header>
+
+<section class="sec" style="padding-top:64px;min-height:70vh">
+  <div class="wrap">
+    <!-- Ingreso de administrador (Firebase Auth) -->
+    <div class="lock-box" id="lockBox">
+      <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+      <h2 style="font-size:24px;margin-bottom:8px">Acceso interno</h2>
+      <p class="small" style="font-size:14px">Zona privada de PixelAndina: desde aquí se entra a los paneles de prospectos y de clientes. Acceso solo para el administrador.</p>
+      <form id="lockForm">
+        <input type="email" id="loginEmail" placeholder="Tu correo" autocomplete="username" aria-label="Tu correo" style="margin-bottom:10px">
+        <input type="password" id="loginPass" placeholder="Tu contraseña" autocomplete="current-password" aria-label="Tu contraseña">
+        <p class="f-error" id="lockErr"></p>
+        <button type="submit" class="btn btn-amber" style="width:100%">Entrar</button>
+      </form>
+      <p class="small" style="margin-top:16px">Sin tu sesión, esta página no muestra ningún dato: es solo la puerta.</p>
+    </div>
+
+    <!-- Puertas internas (solo administrador) -->
+    <div id="adminView" style="display:none">
+      <div class="admin-bar">
+        <div>
+          <p class="eyebrow amber" style="margin-bottom:6px">Vista interna · Solo PixelAndina</p>
+          <h2 style="font-size:30px">Paneles internos</h2>
+          <p class="small" style="margin-top:6px">Sesión iniciada como <b style="color:var(--sub)" id="adminEmail"></b>. Elige el panel que quieres abrir.</p>
+        </div>
+        <div class="admin-tools">
+          <button type="button" class="btn btn-ghost btn-sm" id="btnLogout">Cerrar sesión</button>
+        </div>
+      </div>
+      <div class="cards c2">
+        <article class="card"><div class="body">
+          <span class="badge live">Interno</span>
+          <h3>Prospectos</h3>
+          <p>Los leads que llegan del formulario «Comunícate con ventas»: quién escribió, qué necesita y desde dónde llegó. Ahí se marcan como contactados y se exporta el CSV.</p>
+          <div class="demo-ctas"><a class="btn btn-white btn-sm" href="prospectos.html">Abrir prospectos</a></div>
+        </div></article>
+        <article class="card"><div class="body">
+          <span class="badge live">Interno</span>
+          <h3>Clientes</h3>
+          <p>La administración de los proyectos de clientes: crear proyectos, cambiar su estado, publicar avances y responder el soporte que los clientes escriben desde su panel.</p>
+          <div class="demo-ctas"><a class="btn btn-white btn-sm" href="admin-clientes.html">Abrir clientes</a></div>
+        </div></article>
+      </div>
+    </div>
+
+    <!-- Sesión válida pero no administradora -->
+    <div id="deniedView" style="display:none">
+      <div class="lock-box">
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M5.5 5.5l13 13"/></svg></div>
+        <h2 style="font-size:24px;margin-bottom:8px">Esta zona es solo para PixelAndina</h2>
+        <p class="small" style="font-size:14px">Tu cuenta no tiene acceso a los paneles internos. Si eres cliente, tu espacio está en el panel de clientes.</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+          <a class="btn btn-white btn-sm" href="clientes.html">Ir a mi panel de cliente</a>
+          <button type="button" class="btn btn-ghost btn-sm" id="btnLogout2">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="border-top:none;padding-top:0">
+      <span>© 2026 PixelAndina · Vista interna</span>
+      <span>Hecho en Guayaquil, Ecuador · PixelAndina</span>
+      <span><a href="acceso-interno.html">Acceso interno</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="assets/firebase-config.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/acceso-interno.js"></script>
+</body>
+</html>
