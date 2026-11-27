@@ -547,3 +547,7 @@ footer{border-top:1px solid var(--line);background:var(--bg-2);padding:64px 0 34
 @media (max-width:900px){
   .site-head.nav-open .head-cta .btn{flex:1}
 }
+
+
+/* Ajuste de ancho (Anthony, 27 nov): aprovechar mejor los laterales, menos vacío a los lados */
+:root{--max:1360px}
