@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facturación Electrónica — Demo — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Facturación Electrónica — Demo — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: emite una factura, mira cómo avanza el ciclo de autorización (generada, firmada, autorizada) y cómo queda su representación impresa (RIDE). Todo ocurre en tu navegador.</p>
+    </div>
+  </div>
+</header>
+
+<div class="demo-warning" role="note">
+  ⚠️ <strong>Demo sin validez tributaria:</strong> ningún comprobante sale de esta página ni llega al SRI. El emisor, el RUC, los clientes y las claves de acceso son ficticios y todo el proceso es una simulación.
+</div>
+
+<main class="page">
+
+  <!-- KPIs -->
+  <section class="kpis" aria-label="Indicadores de facturación">
+    <div class="kpi">
+      <span class="kpi-label">Comprobantes emitidos hoy</span>
+      <span class="kpi-value" id="kpiEmitidas">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Monto facturado (autorizadas)</span>
+      <span class="kpi-value" id="kpiMonto">$0.00</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Autorizadas</span>
+      <span class="kpi-value" id="kpiAutorizadas">0</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">Rechazadas</span>
+      <span class="kpi-value" id="kpiRechazadas">0</span>
+    </div>
+  </section>
+
+  <div class="columns">
+
+    <!-- Formulario de emisión -->
+    <section class="panel emit-panel" aria-label="Emitir una factura">
+      <h2>🧾 Emitir una factura</h2>
+      <p class="panel-sub">Emisor ficticio: <strong>Comercial Andina — Demo</strong> · RUC ficticio de ejemplo: 1790000000001 · Establecimiento 001 · Punto de emisión 001.</p>
+
+      <h3>Datos del cliente</h3>
+      <div class="form-error" id="emitError"></div>
+      <div class="field">
+        <label for="clientName">Nombre o razón social</label>
+        <input id="clientName" type="text" placeholder="Ej.: María Fernanda López">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="clientIdType">Tipo de identificación</label>
+          <select id="clientIdType">
+            <option value="Cédula">Cédula</option>
+            <option value="RUC">RUC</option>
+            <option value="Pasaporte">Pasaporte</option>
+            <option value="Consumidor final">Consumidor final</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="clientId">Identificación</label>
+          <input id="clientId" type="text" placeholder="Ej.: 0912345678">
+        </div>
+      </div>
+      <div class="field">
+        <label for="clientEmail">Correo para enviar el comprobante</label>
+        <input id="clientEmail" type="email" placeholder="Ej.: cliente@correo.com">
+      </div>
+      <p class="form-note">💡 Para ver el flujo de error: escribe una cédula de menos de 10 dígitos y emite; el sistema la rechazará en la autorización y podrás corregirla.</p>
+
+      <h3>Productos y servicios</h3>
+      <div class="field">
+        <label for="presetSelect">Producto o servicio frecuente (autorellena)</label>
+        <select id="presetSelect">
+          <option value="">— Escribir manualmente —</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="prodDesc">Descripción</label>
+        <input id="prodDesc" type="text" placeholder="Ej.: Diseño de página web">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="prodQty">Cantidad</label>
+          <input id="prodQty" type="number" min="1" step="1" value="1">
+        </div>
+        <div class="field">
+          <label for="prodPrice">Precio unitario ($)</label>
+          <input id="prodPrice" type="number" min="0" step="0.01" placeholder="0.00">
+        </div>
+        <div class="field">
+          <label for="prodIva">Tarifa IVA</label>
+          <select id="prodIva">
+            <option value="15">15%</option>
+            <option value="0">0%</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="btn-ghost btn-block" id="btnAddLine">＋ Agregar línea</button>
+
+      <div id="linesBox"></div>
+      <p class="cart-empty" id="linesEmpty">Todavía no hay líneas. Agrega al menos un producto o servicio para emitir.</p>
+
+      <div class="totals-box">
+        <div class="total-row"><span>Subtotal tarifa 15%</span><strong id="sumBase15">$0.00</strong></div>
+        <div class="total-row"><span>Subtotal tarifa 0%</span><strong id="sumBase0">$0.00</strong></div>
+        <div class="total-row"><span>IVA 15%</span><strong id="sumIva">$0.00</strong></div>
+        <div class="total-row grand"><span>Total</span><strong id="sumTotal">$0.00</strong></div>
+      </div>
+
+      <button type="button" class="btn-primary btn-block" id="btnEmit">⚡ Emitir factura (simulado)</button>
+      <p class="form-note">Al emitir se genera el comprobante con su número secuencial y su clave de acceso ficticia, y verás el ciclo de autorización paso a paso.</p>
+    </section>
+
+    <!-- RIDE y ciclo de estados -->
+    <div class="side-col">
+
+      <section class="panel cycle-panel" aria-label="Ciclo de autorización">
+        <h2>Ciclo del comprobante</h2>
+        <p class="panel-sub">Así viaja una factura electrónica real: se genera, se firma y la autoridad la autoriza o la rechaza. Aquí es 100% simulado.</p>
+        <div class="steps" id="stepsBox">
+          <div class="step" data-step="generada"><span class="step-dot">1</span><span class="step-label">Generada</span></div>
+          <div class="step-arrow">→</div>
+          <div class="step" data-step="firmada"><span class="step-dot">2</span><span class="step-label">Firmada</span></div>
+          <div class="step-arrow">→</div>
+          <div class="step" data-step="final"><span class="step-dot">3</span><span class="step-label">Autorizada</span></div>
+        </div>
+        <p class="cycle-note" id="cycleNote">Emite una factura o elige «Ver RIDE» en el panel de abajo para seguir su ciclo.</p>
+      </section>
+
+      <section class="panel ride-panel" aria-label="Representación impresa del comprobante">
+        <h2>Representación impresa (RIDE)</h2>
+        <p class="panel-sub">El documento que recibiría el cliente. Sin validez tributaria.</p>
+        <div class="ride-doc" id="rideDoc">
+          <p class="ride-empty">Aún no hay un comprobante seleccionado. Emite una factura o pulsa «Ver RIDE» en cualquier comprobante del panel.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Panel de comprobantes -->
+  <section class="panel invoices-panel" aria-label="Comprobantes emitidos">
+    <h2>Comprobantes emitidos — panel del negocio</h2>
+    <p class="panel-sub">Cada factura emitida queda registrada con su estado. Puedes ver su RIDE, simular el envío por correo o anularla con un motivo.</p>
+
+    <div class="anul-box" id="anulBox" hidden>
+      <h3>Anular comprobante <span id="anulInfo"></span></h3>
+      <div class="form-error" id="anulError"></div>
+      <div class="field">
+        <label for="anulMotivo">Motivo de la anulación</label>
+        <input id="anulMotivo" type="text" placeholder="Ej.: Error en el correo del cliente">
+      </div>
+      <div class="anul-actions">
+        <button type="button" class="btn-primary btn-danger" id="btnConfirmAnul">Confirmar anulación</button>
+        <button type="button" class="btn-ghost" id="btnCancelAnul">Cancelar</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Cliente</th>
+            <th>Fecha y hora</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="invoicesBody"></tbody>
+      </table>
+    </div>
+
+    <div class="activity" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 El facturador está activo: emite tu primera factura de demostración en el formulario.</li>
+      </ul>
+    </div>
+
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p><strong>Demo sin validez tributaria:</strong> ningún comprobante sale de esta página ni llega al SRI. El sistema real se conecta con tu RUC y tu firma electrónica, emite de verdad y envía el RIDE y el XML a tus clientes. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

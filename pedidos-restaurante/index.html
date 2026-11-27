@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedidos para Restaurantes — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Pedidos para Restaurantes — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: el cliente pide desde el QR de su mesa, la cocina recibe la comanda en pantalla y la caja cierra la cuenta sin papelitos ni gritos.</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- Panel izquierdo: vista del cliente (QR de la mesa) -->
+  <section class="client-panel" aria-label="Vista del cliente desde el QR de la mesa">
+    <div class="client-card">
+      <div class="client-header">
+        <div class="avatar" aria-hidden="true">B</div>
+        <div class="client-header-info">
+          <strong>La Brasa Andina — Demo</strong>
+          <span class="status"><span class="dot"></span> Cocina abierta · pide desde tu mesa</span>
+        </div>
+        <span class="client-badge" aria-hidden="true">QR mesa</span>
+      </div>
+
+      <div class="client-body">
+        <h3>¿En qué mesa estás?</h3>
+        <p class="step-sub">El código QR de cada mesa ya trae el número; aquí lo eliges para probar.</p>
+        <div class="mesa-row" id="mesaChips" role="group" aria-label="Selecciona tu mesa"></div>
+
+        <h3>Menú</h3>
+        <div class="cat-tabs" id="catTabs" role="tablist" aria-label="Categorías del menú"></div>
+        <div class="menu-list" id="menuList"></div>
+
+        <h3>Tu pedido</h3>
+        <div class="cart-list" id="cartList"></div>
+        <div class="cart-total-row">
+          <span>Subtotal (IVA se suma en la cuenta)</span>
+          <strong id="cartTotal">$0.00</strong>
+        </div>
+        <div class="form-error" id="sendError"></div>
+        <div class="send-ok" id="sendOk" hidden></div>
+        <button type="button" class="btn-primary btn-amber" id="btnSendOrder">📤 Enviar pedido a cocina</button>
+        <p class="slot-note">Al enviar, la comanda aparece al instante en la pantalla de cocina del panel derecho.</p>
+      </div>
+    </div>
+    <p class="hint">👆 Tú eres el cliente: arma un pedido, escríbele una nota a la cocina («sin cebolla») y envíalo. Luego pasa al panel derecho y prepáralo como si fueras la cocina.</p>
+  </section>
+
+  <!-- Panel derecho: cocina + caja -->
+  <section class="business-panel" aria-label="Panel del restaurante">
+    <h2>Cocina y caja del restaurante</h2>
+    <p class="panel-sub">Lo que ve el equipo de La Brasa Andina, en tiempo real: comandas en pantalla y cierre de cuentas.</p>
+
+    <div class="kpis">
+      <div class="kpi">
+        <span class="kpi-label">Pedidos de hoy</span>
+        <span class="kpi-value" id="kpiOrders">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Ventas del día</span>
+        <span class="kpi-value" id="kpiSales">$0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Ticket promedio</span>
+        <span class="kpi-value" id="kpiTicket">—</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Tiempo prom. de preparación</span>
+        <span class="kpi-value" id="kpiPrep">—</span>
+      </div>
+    </div>
+
+    <h3>🔥 Pantalla de cocina — comandas</h3>
+    <p class="slot-note">El cronómetro corre desde que el pedido entra. Si una comanda pasa de <strong>15 minutos</strong> sin salir, se marca en rojo.</p>
+    <div class="kitchen-grid" id="kitchenList"></div>
+
+    <h3>🧾 Caja — cuentas por cerrar</h3>
+    <div id="cashList"></div>
+
+    <h3>Cuentas cerradas hoy</h3>
+    <div id="closedList"></div>
+
+    <div class="activity" id="activityLog" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 El sistema de pedidos está activo: las comandas del QR llegan directo a la pantalla de cocina.</li>
+      </ul>
+    </div>
+
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos y tiempos de demostración, sin cobros reales. El sistema real imprime o muestra las comandas en cocina, avisa al mesero cuando un plato está listo y guarda el historial de ventas del restaurante. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

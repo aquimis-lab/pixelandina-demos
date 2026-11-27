@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda en Línea Completa — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Tienda en Línea Completa — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: vitrina con ofertas, carrito, checkout en pasos y panel de pedidos. Así se ve una tienda lista para vender, sin depender de plataformas extranjeras.</p>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Vistas">
+  <button type="button" class="tab active" data-tab="store">🛍️ Tienda</button>
+  <button type="button" class="tab" data-tab="panel">📊 Panel del negocio</button>
+</nav>
+
+<main class="page">
+
+  <!-- ================= VISTA TIENDA ================= -->
+  <div id="viewStore">
+    <div class="store-layout">
+      <section class="catalog" aria-label="Vitrina de productos">
+        <div class="toolbar">
+          <input type="search" id="searchInput" placeholder="Buscar productos…" aria-label="Buscar productos">
+          <select id="sortSelect" aria-label="Ordenar por precio">
+            <option value="destacados">Destacados</option>
+            <option value="asc">Precio: menor a mayor</option>
+            <option value="desc">Precio: mayor a menor</option>
+          </select>
+        </div>
+        <div class="chips" id="categoryChips"></div>
+        <p class="store-name">🛒 Andina Shop — Demo · Tienda ficticia de ejemplo</p>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <aside class="cart" aria-label="Carrito y pago">
+        <h2>Tu carrito <span class="cart-count" id="cartCount">0</span></h2>
+        <div id="cartItems"></div>
+        <div class="totals">
+          <p><span>Subtotal</span><strong id="ctSubtotal">$0.00</strong></p>
+          <p><span>Envío</span><strong id="ctShipping">$0.00</strong></p>
+          <p class="muted" id="shipNote"></p>
+          <p class="grand"><span>Total</span><strong id="ctTotal">$0.00</strong></p>
+          <p class="muted">Precios con IVA incluido.</p>
+        </div>
+        <button type="button" class="btn primary wide" id="btnCheckout">Ir a pagar →</button>
+
+        <div id="checkoutBox" style="display:none">
+          <h3>Finalizar compra</h3>
+          <label>Nombre completo<input type="text" id="coName" placeholder="Ej.: Ana María Torres"></label>
+          <label>Teléfono / WhatsApp<input type="tel" id="coPhone" placeholder="Ej.: 099 123 4567"></label>
+          <label>Dirección de entrega<input type="text" id="coAddress" placeholder="Calle, número, ciudad"></label>
+          <p class="co-label">Método de pago</p>
+          <label class="radio"><input type="radio" name="coMethod" value="transferencia"> Transferencia bancaria <span class="muted">(te enviamos los datos al confirmar)</span></label>
+          <label class="radio"><input type="radio" name="coMethod" value="contraentrega"> Contraentrega <span class="muted">(pagas al recibir)</span></label>
+          <p class="error" id="coError"></p>
+          <div class="row-btns">
+            <button type="button" class="btn ghost" id="btnBack">← Volver</button>
+            <button type="button" class="btn primary" id="btnConfirm">Confirmar pedido</button>
+          </div>
+        </div>
+
+        <div id="thanksBox" style="display:none">
+          <h3>🎉 ¡Gracias por tu compra!</h3>
+          <p id="thanksText"></p>
+          <button type="button" class="btn primary wide" id="btnNewSale">Seguir comprando</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ================= VISTA PANEL ================= -->
+  <div id="viewPanel" style="display:none">
+    <section class="kpis" aria-label="Indicadores del negocio">
+      <div class="kpi"><span class="kpi-label">Pedidos</span><span class="kpi-value" id="kpiOrders">0</span></div>
+      <div class="kpi"><span class="kpi-label">Ventas del día</span><span class="kpi-value" id="kpiSales">$0.00</span></div>
+      <div class="kpi"><span class="kpi-label">Ticket promedio</span><span class="kpi-value" id="kpiAvg">$0.00</span></div>
+      <div class="kpi"><span class="kpi-label">Producto más vendido</span><span class="kpi-value small" id="kpiBest">—</span></div>
+    </section>
+    <h2 class="panel-title">Pedidos recibidos</h2>
+    <div class="orders" id="ordersList"></div>
+  </div>
+
+  <!-- Actividad -->
+  <section class="activity" aria-label="Registro de actividad">
+    <div class="activity-head">
+      <h2>Actividad de la demo</h2>
+      <button type="button" class="btn ghost small" id="btnReset">↺ Reiniciar toda la demo</button>
+    </div>
+    <ul id="activityList"></ul>
+  </section>
+
+</main>
+
+<!-- Ficha rápida de producto -->
+<div class="modal" id="quickView" role="dialog" aria-modal="true" aria-label="Detalle del producto">
+  <div class="modal-card">
+    <button type="button" class="modal-close" id="qvClose" aria-label="Cerrar">✕</button>
+    <div class="qv-photo" id="qvPhoto" aria-hidden="true">🛍️</div>
+    <h3 id="qvName"></h3>
+    <p class="muted" id="qvMeta"></p>
+    <p id="qvDesc"></p>
+    <p class="price big" id="qvPrice"></p>
+    <label>Cantidad <input type="number" id="qvQty" min="1" value="1"></label>
+    <button type="button" class="btn primary wide" id="qvAdd">Agregar al carrito</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>Demo de PixelAndina · Datos ficticios, sin pagos reales · pixelandina.online</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
