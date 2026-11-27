@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservas con Seña — PixelAndina</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">P</span>
+    <div>
+      <h1>Reservas con Seña — PixelAndina</h1>
+      <p class="tagline">Demo interactivo: el cliente aparta su cita y la confirma pagando una pequeña seña. Menos inasistencias, cero horarios perdidos en vano.</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- Panel izquierdo: reserva del cliente -->
+  <section class="booking-panel" aria-label="Reserva en línea del cliente">
+    <div class="booking-card">
+      <div class="booking-header">
+        <div class="avatar" aria-hidden="true">E</div>
+        <div class="booking-header-info">
+          <strong>Barbería &amp; Spa El Corte — Demo</strong>
+          <span class="status"><span class="dot"></span> Reservas abiertas · confirmas con tu seña</span>
+        </div>
+        <span class="booking-badge" aria-hidden="true">Seña</span>
+      </div>
+
+      <ol class="steps" id="stepsBar" aria-label="Pasos de la reserva">
+        <li data-step="1" class="active">Servicio</li>
+        <li data-step="2">Profesional</li>
+        <li data-step="3">Fecha y hora</li>
+        <li data-step="4">Tus datos</li>
+        <li data-step="5">Seña</li>
+        <li data-step="6">Listo</li>
+      </ol>
+
+      <div class="booking-body" id="bookingBody" aria-live="polite"></div>
+    </div>
+    <p class="hint">👆 Tú eres el cliente: aparta una cita, paga la seña (simulada) y mira cómo el panel del negocio se actualiza en vivo. Si dejas la seña sin pagar, la reserva queda solo «apartada».</p>
+  </section>
+
+  <!-- Panel derecho: panel del negocio -->
+  <section class="business-panel" aria-label="Panel del negocio">
+    <h2>Panel del negocio</h2>
+    <p class="panel-sub">Lo que ve la recepción de la barbería, en tiempo real. Mostrando las reservas de <strong>hoy</strong>.</p>
+
+    <div class="kpis">
+      <div class="kpi">
+        <span class="kpi-label">Reservas de hoy</span>
+        <span class="kpi-value" id="kpiToday">0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Señas cobradas</span>
+        <span class="kpi-value" id="kpiDeposits">$0</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Tasa de asistencia</span>
+        <span class="kpi-value" id="kpiAttendance">—</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-label">Protegido en no-shows</span>
+        <span class="kpi-value" id="kpiProtected">$0</span>
+      </div>
+    </div>
+
+    <h3>Reservas de hoy</h3>
+    <div class="table-wrap">
+      <table class="agenda-table">
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Cliente</th>
+            <th>Servicio</th>
+            <th>Profesional</th>
+            <th>Seña</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="agendaBody"></tbody>
+      </table>
+    </div>
+    <p class="slot-note">Desde aquí la recepción registra señas pagadas en efectivo o transferencia, marca quién asistió y quién no se presentó, y ve cuánto dinero protegieron las señas.</p>
+
+    <div class="reminder-box" id="reminderBox" hidden>
+      <h3>Recordatorio por WhatsApp</h3>
+      <div class="wa-bubble" id="reminderBubble"></div>
+      <p class="slot-note" id="reminderMeta"></p>
+    </div>
+
+    <div class="activity" id="activityLog" aria-live="polite">
+      <h3>Actividad reciente</h3>
+      <ul id="activityList">
+        <li>🟢 El sistema de reservas con seña está activo: cada reserva pide su anticipo para confirmar.</li>
+      </ul>
+    </div>
+
+    <button class="btn-reset" id="btnResetAll" type="button">↺ Reiniciar toda la demo</button>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Datos de demostración y pagos 100% simulados: no se cobra dinero real. El sistema real cobra la seña por los medios que el negocio ya usa y envía los recordatorios solos. <strong>PixelAndina</strong> · <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

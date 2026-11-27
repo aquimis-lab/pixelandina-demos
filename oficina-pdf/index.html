@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oficina PDF Privada — Demo · PixelAndina</title>
+<style>
+  :root{
+    --verde:#14532D; --verde-claro:#E7F2E9; --ambar:#D97706; --gris:#555555;
+    --borde:#D8E2DA; --fondo:#F7FAF7; --texto:#222222;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Segoe UI", Arial, Helvetica, sans-serif; background:var(--fondo); color:var(--texto);}
+  header{background:var(--verde); color:#fff; padding:18px 24px; display:flex; flex-wrap:wrap; align-items:center; gap:14px;}
+  header .logo{font-weight:800; letter-spacing:2px; color:var(--ambar); font-size:13px; text-transform:uppercase;}
+  header h1{font-size:24px; font-weight:700; width:100%;}
+  header p{width:100%; color:#CFE6D4; font-size:14px; max-width:760px;}
+  .badge-demo{background:var(--ambar); color:#fff; font-weight:700; font-size:12px; padding:5px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:1px;}
+  .badge-priv{background:#fff; color:var(--verde); font-weight:700; font-size:12px; padding:5px 12px; border-radius:999px;}
+  main{max-width:1100px; margin:0 auto; padding:24px 18px 40px;}
+  .aviso-demo{background:#FFF7E8; border:1px solid var(--ambar); color:#7A4A03; border-radius:10px; padding:12px 16px; font-size:14px; margin-bottom:22px;}
+  .drop{border:2px dashed var(--verde); background:var(--verde-claro); border-radius:12px; padding:28px 20px; text-align:center; margin-bottom:28px;}
+  .drop .icono{font-size:34px; color:var(--verde);}
+  .drop h2{font-size:18px; color:var(--verde); margin:8px 0 4px;}
+  .drop p{color:var(--gris); font-size:14px;}
+  h3.seccion{color:var(--verde); font-size:17px; margin:26px 0 12px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:14px;}
+  .card{background:#fff; border:1px solid var(--borde); border-radius:12px; padding:18px 16px; transition:box-shadow .15s ease, transform .15s ease;}
+  .card:hover{box-shadow:0 6px 18px rgba(20,83,45,.14); transform:translateY(-2px);}
+  .card .ic{width:46px; height:46px; border-radius:12px; background:var(--verde-claro); color:var(--verde); display:flex; align-items:center; justify-content:center; font-size:23px; margin-bottom:10px;}
+  .card h4{font-size:15.5px; color:var(--verde); margin-bottom:5px;}
+  .card p{font-size:13.5px; color:var(--gris); line-height:1.45;}
+  .presets{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px;}
+  .preset{background:var(--verde); color:#fff; border-radius:12px; padding:18px;}
+  .preset .tag{color:var(--ambar); font-weight:700; font-size:11.5px; text-transform:uppercase; letter-spacing:1px;}
+  .preset h4{font-size:16.5px; margin:6px 0;}
+  .preset p{font-size:13.5px; color:#CFE6D4; line-height:1.45;}
+  footer{border-top:1px solid var(--borde); padding:18px 24px; color:var(--gris); font-size:13px; display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; max-width:1100px; margin:0 auto;}
+  footer b{color:var(--verde);}
+  .nota{font-size:12.5px; color:var(--gris); margin-top:14px; line-height:1.5;}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">PixelAndina</span>
+  <span class="badge-demo">Demo</span>
+  <span class="badge-priv">🔒 Tus documentos nunca salen de tu oficina</span>
+  <h1>Oficina PDF Privada</h1>
+  <p>Así se ve la herramienta instalada en el computador de tu oficina: más de 50 herramientas de PDF, con tu marca, para todo tu equipo y sin suscripciones por puesto.</p>
+</header>
+
+<main>
+  <div class="aviso-demo"><b>Esto es un demo visual:</b> las funciones están simuladas para que veas cómo se trabaja. La herramienta real se instala en tu oficina y procesa los documentos ahí mismo, sin internet.</div>
+
+  <div class="drop">
+    <div class="icono">⤓</div>
+    <h2>Arrastra aquí tu PDF</h2>
+    <p>En la versión instalada el archivo se procesa en tu propio computador. Nunca se sube a internet.</p>
+  </div>
+
+  <h3 class="seccion">Herramientas más usadas</h3>
+  <div class="grid">
+    <div class="card"><div class="ic">⧉</div><h4>Unir PDF</h4><p>Junta varios archivos en un solo expediente, en el orden que elijas.</p></div>
+    <div class="card"><div class="ic">✂</div><h4>Dividir PDF</h4><p>Separa un documento grande por páginas o en varios archivos.</p></div>
+    <div class="card"><div class="ic">⇄</div><h4>Convertir</h4><p>Word, Excel e imágenes a PDF, y PDF a formatos editables.</p></div>
+    <div class="card"><div class="ic">⤵</div><h4>Comprimir</h4><p>Baja el peso del archivo para que los portales lo acepten sin rechazos.</p></div>
+    <div class="card"><div class="ic">🔍</div><h4>OCR — Leer escaneados</h4><p>Convierte documentos escaneados en texto buscable y copiable.</p></div>
+    <div class="card"><div class="ic">✎</div><h4>Firmar visualmente</h4><p>Coloca la imagen de la firma y el sello sobre el documento.</p></div>
+    <div class="card"><div class="ic">🔑</div><h4>Proteger con contraseña</h4><p>Pon clave de apertura a documentos sensibles antes de enviarlos.</p></div>
+    <div class="card"><div class="ic">⬛</div><h4>Censurar datos</h4><p>Tacha de forma permanente cédulas, cuentas o diagnósticos.</p></div>
+    <div class="card"><div class="ic">↻</div><h4>Reordenar y rotar</h4><p>Reacomoda páginas y endereza las que salieron torcidas del escáner.</p></div>
+    <div class="card"><div class="ic">№</div><h4>Numerar y marca de agua</h4><p>Numera folios y estampa el logo de tu oficina en cada página.</p></div>
+    <div class="card"><div class="ic">🛠</div><h4>Reparar PDF</h4><p>Intenta recuperar archivos dañados que no abren.</p></div>
+    <div class="card"><div class="ic">＋</div><h4>Y 40 herramientas más</h4><p>Comparar versiones, quitar contraseñas de documentos propios, extraer imágenes y más.</p></div>
+  </div>
+
+  <h3 class="seccion">Ajustes listos para Ecuador (incluidos en la instalación)</h3>
+  <div class="presets">
+    <div class="preset"><span class="tag">Preset</span><h4>PDF para el SRI</h4><p>Compresión y formato pensados para que el portal del SRI acepte tus anexos sin rechazos por peso.</p></div>
+    <div class="preset"><span class="tag">Preset</span><h4>PDF para el portal judicial</h4><p>Expedientes listos para subir al portal del Consejo de la Judicatura, en un solo archivo ordenado.</p></div>
+    <div class="preset"><span class="tag">Preset</span><h4>Comprimir sin perder la cédula</h4><p>Reduce el peso manteniendo legibles las cédulas y documentos de identidad escaneados.</p></div>
+  </div>
+
+  <p class="nota"><b>Nota sobre la firma:</b> la firma de esta herramienta es visual (la imagen de la firma). La firma electrónica con validez legal en Ecuador la emiten las entidades acreditadas ante ARCOTEL y el Estado ofrece la app gratuita FirmaEC.</p>
+</main>
+
+<footer>
+  <span><b>Oficina PDF Privada</b> · Instalación desde $99 pago único · Soporte opcional $15/mes</span>
+  <span>PixelAndina · pixelandina.online</span>
+</footer>
+
+</body>
+</html>
