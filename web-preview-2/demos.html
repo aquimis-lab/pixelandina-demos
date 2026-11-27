@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demos en vivo — PixelAndina</title>
+<meta name="description" content="17 demos en vivo de PixelAndina: sistemas reales funcionando con datos de ejemplo. Pruébalos aquí mismo, sin registrarte.">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAMu0lEQVR4nO3cvZElVwGG4V7VRiAywIQIhIFHEYBc4ZAIOciQiQMZyKIw8MDBhZJFApRwCGAxtq6YXc3O3J/uPqf7fZ4Ies5M1ffe03f3zcKUPv/qi3ejnwFgDf/549/ejH4GfswvZRADD/CeQBjDoe/A2APcRhRszwFvwOADrEsQrM+BrsDgA+xLEDzOAd7J6APMQQzcx6HdwOgDzE0MXM9BvcLoAxyTGHiZw/kEww9wDkLgeQ7lCaMPcG5i4P8cxGL4AWqEQDwADD9AWzkEkj+44QfgqWIIpH5gww/AS0ohkPhBDT8AtyiEwGejH2Brxh+AWxW247SFU/jlAbC9s94GnO6HMvwAbOFsIXCqVwDGH4CtnG1jTlEzZ/ulADC3M9wGHP4GwPgDsLczbM+hA+AMvwAAjunoG3TIK4yjHzoA53LEVwKHuwEw/gDM5ojbdKgAOOIBA9BwtI06xJXF0Q4VgLYjvBKY/gbA+ANwNEfYrqkD4AgHCADPmX3Dpg2A2Q8OAF4z85ZNGQAzHxgA3GLWTZsuAGY9KAC414zbNlUAzHhAALCG2TZumgCY7WAAYG0zbd0UATDTgQDAlmbZvOEBMMtBAMBeZti+oQEwwwEAwAijN3BYAIz+wQFgtJFbOCQAjD8AvDdqE3cPAOMPAB8asY27BoDxB4Dn7b2RuwWA8QeAl+25lbsEgPEHgOvstZnD/x8AAGB/mweAT/8AcJs9tnPTADD+AHCfrTd0swAw/gDwmC231HcAACBokwDw6R8A1rHVpq4eAMYfANa1xbauGgDGHwC2sfbG+g4AAAStFgA+/QPAttbc2lUCwPgDwD7W2lyvAAAg6OEA8OkfAPa1xva6AQCAoIcCwKd/ABjj0Q2+OwCMPwCM9cgWewUAAEF3BYBP/wAwh3s32Q0AAATdHAA+/QPAXO7ZZjcAABB0UwD49A8Ac7p1o99u9SAAzO2fv/7X6EcY6md/+unoRxjq6hsAn/4BYG63bLXvAABA0FUB4NM/ABzDtZvtBgAAggQAAAS9GgCu/wHgWK7ZbjcAABD0YgD49A8Ax/TahrsBAIAgAQAAQZ8MANf/AHBsL225GwAACBIAABD0bAC4/geAc/jUprsBAIAgAQAAQT8KANf/AHAuz227GwAACBIAABAkAAAg6IMA8P4fAM7p4413AwAAQQIAAIIEAAAE/RAA3v8DwLk93Xo3AAAQJAAAIEgAAECQAACAoM+WxRcAAaDisvluAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACPrM/wEAAC2ff/XFOzcAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABD0dvQDMNb3f/jr6EcY6ie/+cXoR2Agf//+/svcAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAEPR29AMw1r//+/3oR2Cgn//2V6MfYahf/uV3ox9hqPrv/x+///PoRxjKDQAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEFvPv/qi3ejH2Kk7775dvQjwDBf/v3r0Y8ADOIGAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAoLffffPt6GcAAHbmBgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgKC3ox8ARvry71+PfgSAIdwAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAEDQZ8uyvBn9EADArt64AQCAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIOgSAP4vAABoeLMsbgAAIEkAAECQAACAIAEAAEFPA8AXAQHg3H7YejcAABAkAAAgSAAAQNDHAeB7AABwTh9svBsAAAgSAAAQJAAAIOi5APA9AAA4lx9tuxsAAAgSAAAQ9KkA8BoAAM7h2U13AwAAQQIAAIJeCgCvAQDg2D655W4AACBIAABA0GsB4DUAABzTixvuBgAAgq4JALcAAHAsr263GwAACBIAABB0bQB4DQAAx3DVZrsBAICgWwLALQAAzO3qrXYDAABBtwaAWwAAmNNNG+0GAACC7gkAtwAAMJebt9kNAAAE3RsAbgEAYA53bbIbAAAIeiQA3AIAwFh3b/GjNwAiAADGeGiDvQIAgKA1AsAtAADs6+HtdQMAAEFrBYBbAADYxyqbu+YNgAgAgG2ttrVeAQBA0NoB4BYAALax6sZucQMgAgBgXatv61avAEQAAKxjk031HQAACNoyANwCAMBjNtvSrW8ARAAA3GfTDd3jFYAIAIDbbL6dvgMAAEF7BYBbAAC4zi6buecNgAgAgJfttpV7vwIQAQDwvF03csR3AEQAAHxo920c9SVAEQAA7w3ZxJH/CkAEAFA3bAtH/zNAEQBA1dANHB0AyyICAOgZvn0zBMCyTHAQALCTKTZvlgBYlkkOBAA2NM3WzRQAyzLRwQDAyqbauNkCYFkmOyAAWMF02zZjACzLhAcFAHeactNmDYBlmfTAAOAG027ZzAGwLBMfHAC8YuoNmz0AlmXyAwSAZ0y/XW9HP8CVLgf5buhTAMDLph/+iyPcADx1mIMFIOdQG3W0AFiWgx0wAAmH26ajvAL4mFcCAMzgcMN/ccQbgKcOe/AAHN6hN+joAbAsB/8FAHBIh9+eo74C+JhXAgDs4fDDf3GGG4CnTvOLAWA6p9qYs9wAPOU2AIA1nWr4L84YABdCAIBHnHL4L872CuA5p/4FArCJ02/HmW8AnnIbAMA1Tj/8F5UAuBACADwnM/wXtQC4EAIALEtw+C+qAXAhBACassN/UQ+ACyEA0JAf/gsB8KGnfxhiAOAcjP4zBMCnuRUAODbD/wIB8Dq3AgDHYfSvJABuIwYA5mP07yAA7icGAMYx+g8SAOv4+A9REACsy+CvTABsQxAAPMbgb0wA7OO5P2RRAPCesR9AAIzz2h+8QADOwsBP6H+HlRzzb5kgJwAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="site-head">
+  <div class="head-in">
+    <a class="brand" href="index.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAMu0lEQVR4nO3cvZElVwGG4V7VRiAywIQIhIFHEYBc4ZAIOciQiQMZyKIw8MDBhZJFApRwCGAxtq6YXc3O3J/uPqf7fZ4Ies5M1ffe03f3zcKUPv/qi3ejnwFgDf/549/ejH4GfswvZRADD/CeQBjDoe/A2APcRhRszwFvwOADrEsQrM+BrsDgA+xLEDzOAd7J6APMQQzcx6HdwOgDzE0MXM9BvcLoAxyTGHiZw/kEww9wDkLgeQ7lCaMPcG5i4P8cxGL4AWqEQDwADD9AWzkEkj+44QfgqWIIpH5gww/AS0ohkPhBDT8AtyiEwGejH2Brxh+AWxW247SFU/jlAbC9s94GnO6HMvwAbOFsIXCqVwDGH4CtnG1jTlEzZ/ulADC3M9wGHP4GwPgDsLczbM+hA+AMvwAAjunoG3TIK4yjHzoA53LEVwKHuwEw/gDM5ojbdKgAOOIBA9BwtI06xJXF0Q4VgLYjvBKY/gbA+ANwNEfYrqkD4AgHCADPmX3Dpg2A2Q8OAF4z85ZNGQAzHxgA3GLWTZsuAGY9KAC414zbNlUAzHhAALCG2TZumgCY7WAAYG0zbd0UATDTgQDAlmbZvOEBMMtBAMBeZti+oQEwwwEAwAijN3BYAIz+wQFgtJFbOCQAjD8AvDdqE3cPAOMPAB8asY27BoDxB4Dn7b2RuwWA8QeAl+25lbsEgPEHgOvstZnD/x8AAGB/mweAT/8AcJs9tnPTADD+AHCfrTd0swAw/gDwmC231HcAACBokwDw6R8A1rHVpq4eAMYfANa1xbauGgDGHwC2sfbG+g4AAAStFgA+/QPAttbc2lUCwPgDwD7W2lyvAAAg6OEA8OkfAPa1xva6AQCAoIcCwKd/ABjj0Q2+OwCMPwCM9cgWewUAAEF3BYBP/wAwh3s32Q0AAATdHAA+/QPAXO7ZZjcAABB0UwD49A8Ac7p1o99u9SAAzO2fv/7X6EcY6md/+unoRxjq6hsAn/4BYG63bLXvAABA0FUB4NM/ABzDtZvtBgAAggQAAAS9GgCu/wHgWK7ZbjcAABD0YgD49A8Ax/TahrsBAIAgAQAAQZ8MANf/AHBsL225GwAACBIAABD0bAC4/geAc/jUprsBAIAgAQAAQT8KANf/AHAuz227GwAACBIAABAkAAAg6IMA8P4fAM7p4413AwAAQQIAAIIEAAAE/RAA3v8DwLk93Xo3AAAQJAAAIEgAAECQAACAoM+WxRcAAaDisvluAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACPrM/wEAAC2ff/XFOzcAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABD0dvQDMNb3f/jr6EcY6ie/+cXoR2Agf//+/svcAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAEPR29AMw1r//+/3oR2Cgn//2V6MfYahf/uV3ox9hqPrv/x+///PoRxjKDQAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEFvPv/qi3ejH2Kk7775dvQjwDBf/v3r0Y8ADOIGAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAoLffffPt6GcAAHbmBgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgKC3ox8ARvry71+PfgSAIdwAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAEDQZ8uyvBn9EADArt64AQCAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIOgSAP4vAABoeLMsbgAAIEkAAECQAACAIAEAAEFPA8AXAQHg3H7YejcAABAkAAAgSAAAQNDHAeB7AABwTh9svBsAAAgSAAAQJAAAIOi5APA9AAA4lx9tuxsAAAgSAAAQ9KkA8BoAAM7h2U13AwAAQQIAAIJeCgCvAQDg2D655W4AACBIAABA0GsB4DUAABzTixvuBgAAgq4JALcAAHAsr263GwAACBIAABB0bQB4DQAAx3DVZrsBAICgWwLALQAAzO3qrXYDAABBtwaAWwAAmNNNG+0GAACC7gkAtwAAMJebt9kNAAAE3RsAbgEAYA53bbIbAAAIeiQA3AIAwFh3b/GjNwAiAADGeGiDvQIAgKA1AsAtAADs6+HtdQMAAEFrBYBbAADYxyqbu+YNgAgAgG2ttrVeAQBA0NoB4BYAALax6sZucQMgAgBgXatv61avAEQAAKxjk031HQAACNoyANwCAMBjNtvSrW8ARAAA3GfTDd3jFYAIAIDbbL6dvgMAAEF7BYBbAAC4zi6buecNgAgAgJfttpV7vwIQAQDwvF03csR3AEQAAHxo920c9SVAEQAA7w3ZxJH/CkAEAFA3bAtH/zNAEQBA1dANHB0AyyICAOgZvn0zBMCyTHAQALCTKTZvlgBYlkkOBAA2NM3WzRQAyzLRwQDAyqbauNkCYFkmOyAAWMF02zZjACzLhAcFAHeactNmDYBlmfTAAOAG027ZzAGwLBMfHAC8YuoNmz0AlmXyAwSAZ0y/XW9HP8CVLgf5buhTAMDLph/+iyPcADx1mIMFIOdQG3W0AFiWgx0wAAmH26ajvAL4mFcCAMzgcMN/ccQbgKcOe/AAHN6hN+joAbAsB/8FAHBIh9+eo74C+JhXAgDs4fDDf3GGG4CnTvOLAWA6p9qYs9wAPOU2AIA1nWr4L84YABdCAIBHnHL4L872CuA5p/4FArCJ02/HmW8AnnIbAMA1Tj/8F5UAuBACADwnM/wXtQC4EAIALEtw+C+qAXAhBACassN/UQ+ACyEA0JAf/gsB8KGnfxhiAOAcjP4zBMCnuRUAODbD/wIB8Dq3AgDHYfSvJABuIwYA5mP07yAA7icGAMYx+g8SAOv4+A9REACsy+CvTABsQxAAPMbgb0wA7OO5P2RRAPCesR9AAIzz2h+8QADOwsBP6H+HlRzzb5kgJwAAAABJRU5ErkJggg==" alt="Logo de PixelAndina"><span>Pixel<em>Andina</em></span></a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="demos.html" class="on">Demos</a>
+      <a href="tienda.html">Tienda digital</a>
+      <a href="corporativo.html">Empresas</a>
+      <a href="ideas.html">Ideas para ti</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="portafolio.html">Portafolio</a>
+    </nav>
+    <div class="head-cta"><a class="btn btn-white btn-sm" href="ventas.html">Comunícate con ventas</a></div>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:56px">
+  <div class="glow"></div><div class="gridbg"></div>
+  <div class="wrap">
+    <span class="pill"><span class="dot"></span> Demos en vivo · Sin registro</span>
+    <h1 style="font-size:clamp(34px,4.6vw,52px)">17 demos en vivo, <span class="grad">listos para probar</span></h1>
+    <p class="lead">Cada demo es un sistema real funcionando con datos de ejemplo. Toca «Probar demo» y úsalo aquí mismo, sin salir de la página y sin registrarte. Si te gusta lo que ves, ese es el nivel de lo que entregamos.</p>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:48px">
+  <div class="wrap">
+    <div class="filters rv">
+      <button type="button" data-filter="todas" aria-pressed="true">Todas (17)</button>
+      <button type="button" data-filter="ventas" aria-pressed="false">Ventas y clientes</button>
+      <button type="button" data-filter="empresa" aria-pressed="false">Empresa y equipo</button>
+      <button type="button" data-filter="operacion" aria-pressed="false">Operación</button>
+      <button type="button" data-filter="citas" aria-pressed="false">Citas y reservas</button>
+      <button type="button" data-filter="mas" aria-pressed="false">Productividad y más</button>
+    </div>
+    <div class="cards c3">
+      <article class="card demo-card" data-cat="empresa"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Empresa y equipo</span></div>
+        <h3>Panel RR. HH.</h3><p>Empleados, asistencia, vacaciones y permisos con aprobación en línea, como lo usaría tu equipo de talento humano.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/panel-rrhh/" data-title="Panel RR. HH.">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo del Panel RR. HH. y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="ventas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Ventas y clientes</span></div>
+        <h3>Asistente de Ventas por WhatsApp</h3><p>El vendedor que atiende tu WhatsApp las 24 horas: bandeja del equipo, respuestas rápidas con variables y pedidos confirmados sin perder un chat.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/asistente-whatsapp/" data-title="Asistente de Ventas por WhatsApp">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo del Asistente de Ventas por WhatsApp y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="ventas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Ventas y clientes</span></div>
+        <h3>CRM WhatsApp por rubros</h3><p>Tus clientes de WhatsApp ordenados por etapa de venta, con plantillas listas para clínicas, inmobiliarias, talleres y tiendas.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/crm-whatsapp/" data-title="CRM WhatsApp por rubros">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo del CRM WhatsApp por rubros y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="operacion"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Operación</span></div>
+        <h3>Panel de Inventario y Pedidos</h3><p>Stock con alertas de mínimo, pedidos a proveedores y kardex por producto: la bodega bajo control.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/inventario-pedidos/" data-title="Panel de Inventario y Pedidos">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo del Panel de Inventario y Pedidos y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="citas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Citas y reservas</span></div>
+        <h3>Agendamiento en línea</h3><p>Tus clientes reservan solos desde un enlace: servicios, horarios reales del equipo y confirmación inmediata, para salud y belleza.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/agendamiento/" data-title="Agendamiento en línea">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de Agendamiento en línea y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="empresa"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Empresa y equipo</span></div>
+        <h3>App Interna Sin Papeles</h3><p>Solicitudes, aprobaciones y documentos de tu empresa sin una sola hoja: cada trámite con su responsable y su estado.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/app-sin-papeles/" data-title="App Interna Sin Papeles">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de la App Interna Sin Papeles y quiero algo así para mi empresa.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="mas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Productividad y más</span></div>
+        <h3>Notas de Voz y Reuniones en Español</h3><p>Graba la reunión y recibe el resumen con acuerdos y responsables: pensado para cómo hablamos en Ecuador.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/notas-voz/" data-title="Notas de Voz y Reuniones en Español">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de Notas de Voz y Reuniones y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="mas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Productividad y más</span></div>
+        <h3>Organizador Familiar</h3><p>Calendario compartido, tareas de la casa, compras y gastos de la familia en una sola app, sin grupos eternos de chat.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/organizador-familiar/" data-title="Organizador Familiar">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo del Organizador Familiar y quiero algo así.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="ventas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Ventas y clientes</span></div>
+        <h3>ReseñasQueVenden</h3><p>Pide la reseña en el momento justo, responde con ayuda de IA y convierte tu reputación de Google en clientes nuevos.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/resenas/" data-title="ReseñasQueVenden">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de ReseñasQueVenden y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="ventas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Ventas y clientes</span></div>
+        <h3>Catálogo Cotizador WhatsApp B2B</h3><p>Tu catálogo mayorista que arma la cotización sola y la deja lista en el WhatsApp del cliente, con tus precios por volumen.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/catalogo-cotizador/" data-title="Catálogo Cotizador WhatsApp B2B">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo del Catálogo Cotizador B2B y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="mas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Productividad y más</span></div>
+        <h3>Oficina PDF Privada</h3><p>Une, divide, comprime y convierte tus PDF dentro de tu oficina, sin subir documentos sensibles a webs gratuitas.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/oficina-pdf/" data-title="Oficina PDF Privada">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de Oficina PDF Privada y quiero algo así para mi oficina.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="citas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Citas y reservas</span></div>
+        <h3>Reservas con Seña</h3><p>Reservas con anticipo por transferencia para que el cliente sí llegue: menos plantones en restaurantes, clínicas y salones.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/reservas-sena/" data-title="Reservas con Seña">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de Reservas con Seña y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="operacion"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Operación</span></div>
+        <h3>Facturación Electrónica</h3><p>Facturas, notas de crédito y retenciones con la estructura del SRI y firma electrónica. Simulación completa, sin validez tributaria.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/facturacion/" data-title="Facturación Electrónica">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de Facturación Electrónica y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="ventas"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Ventas y clientes</span></div>
+        <h3>Tienda en Línea Completa</h3><p>Catálogo, carrito y pedidos con pago por transferencia o contraentrega: tu tienda abierta las 24 horas.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/tienda-completa/" data-title="Tienda en Línea Completa">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de la Tienda en Línea y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="operacion"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Operación</span></div>
+        <h3>Pedidos para Restaurantes</h3><p>Menú digital con QR, pedidos por mesa y cocina sin gritos: el restaurante atiende más rápido y sin errores.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/pedidos-restaurante/" data-title="Pedidos para Restaurantes">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo de Pedidos para Restaurantes y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="empresa"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Empresa y equipo</span></div>
+        <h3>Dashboard «Un Solo Número»</h3><p>El panel del dueño: una sola cifra de salud del negocio y la alerta que importa hoy, sin pelear con hojas de cálculo.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/dashboard-un-numero/" data-title="Dashboard «Un Solo Número»">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo del Dashboard «Un Solo Número» y quiero algo así para mi negocio.">Lo quiero</a></div>
+      </div></article>
+      <article class="card demo-card" data-cat="empresa"><div class="body">
+        <div><span class="badge live">En vivo</span> <span class="badge">Empresa y equipo</span></div>
+        <h3>Asistente Interno de Conocimiento</h3><p>Tu equipo pregunta y el asistente responde solo desde tus políticas y manuales aprobados, citando la fuente exacta.</p>
+        <div class="demo-ctas"><button type="button" class="btn btn-white btn-sm" data-demo="https://aquimis-lab.github.io/pixelandina-demos/asistente-conocimiento/" data-title="Asistente Interno de Conocimiento">Probar demo</button><a class="btn btn-ghost btn-sm" data-wa="Hola PixelAndina, probé la demo del Asistente Interno de Conocimiento y quiero algo así para mi empresa.">Lo quiero</a></div>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="border-top:none;padding-top:0">
+  <div class="wrap">
+    <div class="cta-band rv">
+      <h2>¿Viste algo que le sirve a tu negocio?</h2>
+      <p>Cada demo se adapta a tu rubro, tu marca y tu forma de trabajar. Cotizar no cuesta nada y el precio final queda cerrado por escrito.</p>
+      <div class="row">
+        <a class="btn btn-white btn-lg" href="ventas.html">Cotizar mi versión</a>
+        <a class="btn btn-ghost btn-lg" href="servicios.html">Ver precios primero</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAMu0lEQVR4nO3cvZElVwGG4V7VRiAywIQIhIFHEYBc4ZAIOciQiQMZyKIw8MDBhZJFApRwCGAxtq6YXc3O3J/uPqf7fZ4Ies5M1ffe03f3zcKUPv/qi3ejnwFgDf/549/ejH4GfswvZRADD/CeQBjDoe/A2APcRhRszwFvwOADrEsQrM+BrsDgA+xLEDzOAd7J6APMQQzcx6HdwOgDzE0MXM9BvcLoAxyTGHiZw/kEww9wDkLgeQ7lCaMPcG5i4P8cxGL4AWqEQDwADD9AWzkEkj+44QfgqWIIpH5gww/AS0ohkPhBDT8AtyiEwGejH2Brxh+AWxW247SFU/jlAbC9s94GnO6HMvwAbOFsIXCqVwDGH4CtnG1jTlEzZ/ulADC3M9wGHP4GwPgDsLczbM+hA+AMvwAAjunoG3TIK4yjHzoA53LEVwKHuwEw/gDM5ojbdKgAOOIBA9BwtI06xJXF0Q4VgLYjvBKY/gbA+ANwNEfYrqkD4AgHCADPmX3Dpg2A2Q8OAF4z85ZNGQAzHxgA3GLWTZsuAGY9KAC414zbNlUAzHhAALCG2TZumgCY7WAAYG0zbd0UATDTgQDAlmbZvOEBMMtBAMBeZti+oQEwwwEAwAijN3BYAIz+wQFgtJFbOCQAjD8AvDdqE3cPAOMPAB8asY27BoDxB4Dn7b2RuwWA8QeAl+25lbsEgPEHgOvstZnD/x8AAGB/mweAT/8AcJs9tnPTADD+AHCfrTd0swAw/gDwmC231HcAACBokwDw6R8A1rHVpq4eAMYfANa1xbauGgDGHwC2sfbG+g4AAAStFgA+/QPAttbc2lUCwPgDwD7W2lyvAAAg6OEA8OkfAPa1xva6AQCAoIcCwKd/ABjj0Q2+OwCMPwCM9cgWewUAAEF3BYBP/wAwh3s32Q0AAATdHAA+/QPAXO7ZZjcAABB0UwD49A8Ac7p1o99u9SAAzO2fv/7X6EcY6md/+unoRxjq6hsAn/4BYG63bLXvAABA0FUB4NM/ABzDtZvtBgAAggQAAAS9GgCu/wHgWK7ZbjcAABD0YgD49A8Ax/TahrsBAIAgAQAAQZ8MANf/AHBsL225GwAACBIAABD0bAC4/geAc/jUprsBAIAgAQAAQT8KANf/AHAuz227GwAACBIAABAkAAAg6IMA8P4fAM7p4413AwAAQQIAAIIEAAAE/RAA3v8DwLk93Xo3AAAQJAAAIEgAAECQAACAoM+WxRcAAaDisvluAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACPrM/wEAAC2ff/XFOzcAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABD0dvQDMNb3f/jr6EcY6ie/+cXoR2Agf//+/svcAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAEPR29AMw1r//+/3oR2Cgn//2V6MfYahf/uV3ox9hqPrv/x+///PoRxjKDQAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEFvPv/qi3ejH2Kk7775dvQjwDBf/v3r0Y8ADOIGAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAoLffffPt6GcAAHbmBgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgKC3ox8ARvry71+PfgSAIdwAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAEDQZ8uyvBn9EADArt64AQCAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIOgSAP4vAABoeLMsbgAAIEkAAECQAACAIAEAAEFPA8AXAQHg3H7YejcAABAkAAAgSAAAQNDHAeB7AABwTh9svBsAAAgSAAAQJAAAIOi5APA9AAA4lx9tuxsAAAgSAAAQ9KkA8BoAAM7h2U13AwAAQQIAAIJeCgCvAQDg2D655W4AACBIAABA0GsB4DUAABzTixvuBgAAgq4JALcAAHAsr263GwAACBIAABB0bQB4DQAAx3DVZrsBAICgWwLALQAAzO3qrXYDAABBtwaAWwAAmNNNG+0GAACC7gkAtwAAMJebt9kNAAAE3RsAbgEAYA53bbIbAAAIeiQA3AIAwFh3b/GjNwAiAADGeGiDvQIAgKA1AsAtAADs6+HtdQMAAEFrBYBbAADYxyqbu+YNgAgAgG2ttrVeAQBA0NoB4BYAALax6sZucQMgAgBgXatv61avAEQAAKxjk031HQAACNoyANwCAMBjNtvSrW8ARAAA3GfTDd3jFYAIAIDbbL6dvgMAAEF7BYBbAAC4zi6buecNgAgAgJfttpV7vwIQAQDwvF03csR3AEQAAHxo920c9SVAEQAA7w3ZxJH/CkAEAFA3bAtH/zNAEQBA1dANHB0AyyICAOgZvn0zBMCyTHAQALCTKTZvlgBYlkkOBAA2NM3WzRQAyzLRwQDAyqbauNkCYFkmOyAAWMF02zZjACzLhAcFAHeactNmDYBlmfTAAOAG027ZzAGwLBMfHAC8YuoNmz0AlmXyAwSAZ0y/XW9HP8CVLgf5buhTAMDLph/+iyPcADx1mIMFIOdQG3W0AFiWgx0wAAmH26ajvAL4mFcCAMzgcMN/ccQbgKcOe/AAHN6hN+joAbAsB/8FAHBIh9+eo74C+JhXAgDs4fDDf3GGG4CnTvOLAWA6p9qYs9wAPOU2AIA1nWr4L84YABdCAIBHnHL4L872CuA5p/4FArCJ02/HmW8AnnIbAMA1Tj/8F5UAuBACADwnM/wXtQC4EAIALEtw+C+qAXAhBACassN/UQ+ACyEA0JAf/gsB8KGnfxhiAOAcjP4zBMCnuRUAODbD/wIB8Dq3AgDHYfSvJABuIwYA5mP07yAA7icGAMYx+g8SAOv4+A9REACsy+CvTABsQxAAPMbgb0wA7OO5P2RRAPCesR9AAIzz2h+8QADOwsBP6H+HlRzzb5kgJwAAAABJRU5ErkJggg==" alt="Logo de PixelAndina"><span>Pixel<em>Andina</em></span></a>
+        <p>Webs, apps, dashboards y productos digitales para negocios y empresas en Ecuador.</p>
+      </div>
+      <div><h4>Servicios</h4><ul>
+        <li><a href="servicios.html">Web para tu negocio</a></li>
+        <li><a href="servicios.html">Ventas por WhatsApp</a></li>
+        <li><a href="servicios.html">Tablero o app a medida</a></li>
+        <li><a href="corporativo.html">Servicios corporativos</a></li>
+        <li><a href="ideas.html">Desarrollos a pedido</a></li>
+      </ul></div>
+      <div><h4>Tienda digital</h4><ul>
+        <li><a href="tienda.html">Sistema Operativo Pyme · $39</a></li>
+        <li><a href="tienda.html">Kit RR. HH. digital · $19</a></li>
+        <li><a href="tienda.html">Kit Formalízate — RIMPE · $24</a></li>
+        <li><a href="tienda.html">Kit Educativo · $15</a></li>
+        <li><a href="tienda.html">Cursos · muy pronto</a></li>
+      </ul></div>
+      <div><h4>Recursos</h4><ul>
+        <li><a href="demos.html">17 demos en vivo</a></li>
+        <li><a href="portafolio.html">Portafolio y caso real</a></li>
+        <li><a href="clientes.html">Compromiso con clientes</a></li>
+        <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+        <li><a href="ventas.html">Comunícate con ventas</a></li>
+      </ul></div>
+      <div><h4>Contacto</h4><ul>
+        <li><a href="mailto:ventas@pixelandina.online">ventas@pixelandina.online</a></li>
+        <li><a href="https://wa.me/593939462496" target="_blank" rel="noopener">WhatsApp +593 93 946 2496</a></li>
+        <li><a href="ventas.html">Guayaquil, Ecuador</a></li>
+        <li><a href="ventas.html">Lun a sáb · 9:00 a 18:00</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 PixelAndina</span>
+      <span>Vista previa del rediseño v2 · El sitio actual sigue en <a href="https://pixelandina.online" target="_blank" rel="noopener">pixelandina.online</a></span>
+      <span><a href="prospectos.html">Acceso interno · Prospectos</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="demoModal" role="dialog" aria-label="Demo en vivo">
+  <div class="modal-box">
+    <div class="modal-bar">
+      <span class="modal-title">Demo en vivo</span>
+      <a class="modal-open" href="#" target="_blank" rel="noopener">Abrir en pestaña nueva ↗</a>
+      <button class="modal-close" aria-label="Cerrar demo">✕</button>
+    </div>
+    <iframe title="Demo en vivo de PixelAndina" loading="lazy"></iframe>
+  </div>
+</div>
+
+<a class="wa-float" data-wa="Hola PixelAndina, quiero cotizar una web o app para mi negocio." aria-label="Cotizar por WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp</a>
+
+<button class="chat-btn" id="chatBtn" aria-expanded="false" aria-controls="chatPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Asistente</button>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Asistente de PixelAndina">
+  <div class="chat-head"><div><b>Asistente de PixelAndina</b><span>Respuestas automáticas y guiadas · no es una persona ni una IA en vivo</span></div><button class="chat-close" id="chatClose" aria-label="Cerrar asistente">✕</button></div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-chips" id="chatChips"></div>
+  <form class="chat-form" id="chatForm"><input id="chatInput" type="text" placeholder="Escribe tu duda…" autocomplete="off" aria-label="Escribe tu duda"><button type="submit">Enviar</button></form>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/chat.js"></script>
+</body>
+</html>
