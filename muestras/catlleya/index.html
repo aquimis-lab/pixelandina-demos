@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catlleya Floristería — Catálogo</title>
+<meta name="description" content="Catálogo de Catlleya Floristería, Guayaquil. Arreglos florales para todo tipo de evento: bouquets, rosas, bodas y eventos. Pide por WhatsApp.">
+<style>
+  :root{
+    --rose:#9d2246; --rose-dark:#7c1a38; --rose-soft:#fdf3f5; --ink:#2b2320;
+    --muted:#7a6a64; --line:#f0dde1; --wa:#25d366; --wa-dark:#1da851;
+    --gold:#c99a2e;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif; color:var(--ink); background:#fff; padding-bottom:96px;}
+  .ribbon{background:var(--rose-dark); color:#fff; text-align:center; font-size:13px; padding:8px 12px; letter-spacing:.02em;}
+  header{padding:28px 18px 8px; text-align:center;}
+  header .flower{font-size:34px;}
+  h1{font-size:30px; color:var(--rose-dark); letter-spacing:.01em; margin-top:4px;}
+  .tagline{color:var(--muted); font-size:15px; margin-top:6px; line-height:1.45;}
+  .chips{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px;}
+  .chip{border:1px solid var(--line); background:var(--rose-soft); color:var(--rose-dark); border-radius:999px; padding:6px 12px; font-size:13px; text-decoration:none;}
+  .chip strong{font-weight:600;}
+  nav.cats{display:flex; gap:8px; overflow-x:auto; padding:16px 14px 6px; position:sticky; top:0; background:#fff; z-index:5;}
+  nav.cats button{flex:0 0 auto; border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px; padding:8px 14px; font-size:14px; cursor:pointer;}
+  nav.cats button.active{background:var(--rose); border-color:var(--rose); color:#fff;}
+  main{max-width:1080px; margin:0 auto; padding:10px 14px 0;}
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+  @media(min-width:760px){ .grid{grid-template-columns:repeat(3,1fr);} }
+  @media(min-width:1024px){ .grid{grid-template-columns:repeat(4,1fr);} }
+  .card{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; display:flex; flex-direction:column; box-shadow:0 2px 10px rgba(157,34,70,.05);}
+  .card img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block;}
+  .card .body{padding:12px; display:flex; flex-direction:column; gap:6px; flex:1;}
+  .cat{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); font-weight:700;}
+  .card h3{font-size:16px; line-height:1.3;}
+  .card p{font-size:13px; color:var(--muted); line-height:1.45; flex:1;}
+  .price{font-size:16px; font-weight:700; color:var(--rose-dark);}
+  .price .old{color:var(--muted); text-decoration:line-through; font-weight:400; font-size:13px; margin-right:6px;}
+  .price .ask{color:var(--muted); font-weight:600; font-size:14px;}
+  .offer{display:inline-block; background:var(--gold); color:#fff; font-size:11px; font-weight:700; border-radius:6px; padding:2px 7px; margin-left:8px; vertical-align:middle;}
+  .addbtn{margin-top:8px; background:var(--rose); color:#fff; border:none; border-radius:10px; padding:10px; font-size:14px; font-weight:600; cursor:pointer; width:100%;}
+  .addbtn:active{background:var(--rose-dark);}
+  .stepper{display:none; margin-top:8px; align-items:center; justify-content:space-between; background:var(--rose-soft); border-radius:10px; padding:4px;}
+  .stepper button{width:38px; height:38px; border:none; border-radius:8px; background:#fff; color:var(--rose-dark); font-size:20px; font-weight:700; cursor:pointer; box-shadow:0 1px 4px rgba(0,0,0,.08);}
+  .stepper span{font-weight:700; font-size:15px;}
+  .cartbar{position:fixed; left:0; right:0; bottom:0; background:#fff; border-top:1px solid var(--line); box-shadow:0 -4px 18px rgba(0,0,0,.08); padding:12px 16px; display:none; z-index:20;}
+  .cartbar .row{max-width:1080px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px;}
+  .cartbar .info{font-size:14px;}
+  .cartbar .info strong{display:block; font-size:16px; color:var(--rose-dark);}
+  .cartbar button{background:var(--wa); color:#fff; border:none; border-radius:12px; padding:12px 18px; font-size:15px; font-weight:700; cursor:pointer;}
+  .overlay{position:fixed; inset:0; background:rgba(30,10,16,.5); display:none; z-index:30;}
+  .sheet{position:fixed; left:0; right:0; bottom:0; background:#fff; border-radius:20px 20px 0 0; max-height:88vh; overflow-y:auto; padding:20px 18px 26px; display:none; z-index:31; max-width:640px; margin:0 auto;}
+  .sheet h2{font-size:19px; color:var(--rose-dark); margin-bottom:4px;}
+  .sheet .sub{font-size:13px; color:var(--muted); margin-bottom:14px;}
+  .item{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--line);}
+  .item .nm{font-size:14px; font-weight:600;}
+  .item .pr{font-size:13px; color:var(--muted);}
+  .item .st{display:flex; align-items:center; gap:8px;}
+  .item .st button{width:30px; height:30px; border:1px solid var(--line); background:#fff; border-radius:8px; font-size:16px; cursor:pointer; color:var(--rose-dark); font-weight:700;}
+  .total{display:flex; justify-content:space-between; font-size:16px; font-weight:700; padding:14px 0 4px;}
+  .totalnote{font-size:12px; color:var(--muted); margin-bottom:10px;}
+  label{font-size:13px; font-weight:600; display:block; margin:12px 0 5px;}
+  input,textarea{width:100%; border:1px solid var(--line); border-radius:10px; padding:11px; font-size:15px; font-family:inherit;}
+  .send{margin-top:16px; width:100%; background:var(--wa); color:#fff; border:none; border-radius:12px; padding:14px; font-size:16px; font-weight:700; cursor:pointer;}
+  .send:active{background:var(--wa-dark);}
+  .close{float:right; background:none; border:none; font-size:22px; cursor:pointer; color:var(--muted);}
+  .err{color:#b3261e; font-size:13px; margin-top:8px; display:none;}
+  .wafloat{position:fixed; right:16px; bottom:104px; width:54px; height:54px; border-radius:50%; background:var(--wa); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(0,0,0,.25); z-index:15; text-decoration:none;}
+  .wafloat svg{width:30px; height:30px; fill:#fff;}
+  footer{max-width:1080px; margin:26px auto 0; padding:18px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6; border-top:1px solid var(--line);}
+  footer a{color:var(--rose-dark); text-decoration:none; font-weight:600;}
+</style>
+</head>
+<body>
+<div class="ribbon">Muestra gratuita de tu catálogo en línea · Vigente hasta el sábado 5 de diciembre de 2026</div>
+
+<header>
+  <div class="flower">✿</div>
+  <h1>Catlleya Floristería</h1>
+  <p class="tagline">Arreglos florales para todo tipo de evento.<br>Regalos, globos, chocolates y más.</p>
+  <div class="chips">
+    <span class="chip">📍 Guayaquil · Entregas a domicilio y oficina</span>
+    <a class="chip" href="https://wa.me/593993168659" target="_blank" rel="noopener">WhatsApp <strong>099 316 8659</strong></a>
+    <a class="chip" href="https://www.instagram.com/floristeria_catlleya" target="_blank" rel="noopener">Instagram <strong>@floristeria_catlleya</strong></a>
+  </div>
+</header>
+
+<nav class="cats" id="cats"></nav>
+<main><div class="grid" id="grid"></div></main>
+
+<footer>
+  Catálogo de muestra preparado por <a href="https://pixelandina.online" target="_blank" rel="noopener">PixelAndina</a> para Catlleya Floristería.<br>
+  Los nombres, textos y precios salen de tu Instagram: en tu catálogo final ajustamos todo a tu gusto.
+</footer>
+
+<a class="wafloat" href="https://wa.me/593993168659?text=Hola%2C%20Catlleya%20Florister%C3%ADa.%20Quiero%20informaci%C3%B3n%20sobre%20un%20arreglo." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.3.8-1.7 1.6-2.4 1.6-.6.1-1.4.2-4.7-1-4-1.6-6.5-5.6-6.7-5.9-.2-.3-1.6-2.1-1.6-4s.9-2.8 1.3-3.2c.3-.4.7-.5 1-.5h.7c.2 0 .5 0 .8.6l1 2.4c.1.2.1.4 0 .6l-.5.7-.5.6c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.7.3.2.5.1.7-.1l1.1-1.3c.2-.3.4-.2.7-.1l2.3 1.1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2z"/></svg>
+</a>
+
+<div class="cartbar" id="cartbar">
+  <div class="row">
+    <div class="info"><span id="cartcount">0 productos</span><strong id="carttotal">$0.00</strong></div>
+    <button id="openCart">Ver pedido</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="sheet" id="sheet">
+  <button class="close" id="closeSheet" aria-label="Cerrar">×</button>
+  <h2>Tu pedido</h2>
+  <p class="sub">Revisa tu pedido y envíalo por WhatsApp. Te atendemos enseguida.</p>
+  <div id="items"></div>
+  <div class="total"><span>Total</span><span id="sheetTotal">$0.00</span></div>
+  <p class="totalnote" id="totalNote"></p>
+  <label for="cname">Tu nombre</label>
+  <input id="cname" type="text" placeholder="Ej.: María Fernanda" autocomplete="name">
+  <label for="cphone">Tu teléfono *</label>
+  <input id="cphone" type="tel" placeholder="Ej.: 099 123 4567" autocomplete="tel">
+  <label for="cnote">Nota (opcional)</label>
+  <textarea id="cnote" rows="2" placeholder="Ej.: Para el sábado en la mañana, con tarjeta de felicitación"></textarea>
+  <p class="err" id="formErr">Escribe tu teléfono para poder contactarte por el pedido.</p>
+  <button class="send" id="sendOrder">Enviar pedido por WhatsApp</button>
+</div>
+
+<script>
+var WA = "593993168659";
+var PRODUCTS = [
+  { id:"p2",  name:"Ramo de 25 rosas rojas",        cat:"Rosas",           price:30,   old:40,   from:false, img:"img/p2.jpg",  desc:"25 rosas rojas con aliento de bebé. El detalle perfecto para sorprender y crear un momento inolvidable." },
+  { id:"p3",  name:"Bouquet listo para regalar",    cat:"Bouquets",        price:15,   old:null, from:true,  img:"img/p3.jpg",  desc:"Bouquets listos para regalar: cumpleaños, aniversarios o un detalle inesperado. Entregas en Guayaquil." },
+  { id:"p5",  name:"Bouquets mixtos",               cat:"Bouquets",        price:15,   old:null, from:true,  img:"img/p5.jpg",  desc:"Bouquets mixtos de rosas y girasoles, para todos los gustos." },
+  { id:"p1",  name:"Arreglo de flores amarillas",   cat:"Bouquets",        price:null, old:null, from:false, img:"img/p1.jpg",  desc:"Flores amarillas para llenar de alegría a alguien especial. Un detalle que nunca se olvida." },
+  { id:"p4",  name:"Arreglo para tu mejor amiga",   cat:"Bouquets",        price:null, old:null, from:false, img:"img/p4.jpg",  desc:"Arreglos perfectos para amistad, cumpleaños o un «solo porque sí». Entregas en oficina y domicilio." },
+  { id:"p6",  name:"Arreglo especial de rosas rojas", cat:"Rosas",         price:null, old:null, from:false, img:"img/p6.jpg",  desc:"Arreglos especiales de rosas rojas para el amor y la amistad." },
+  { id:"p8",  name:"Gran arreglo de rosas rojas",   cat:"Rosas",           price:null, old:null, from:false, img:"img/p8.jpg",  desc:"Arreglo grande de rosas rojas para ocasiones especiales." },
+  { id:"p11", name:"Caja de rosas rojas",           cat:"Rosas",           price:null, old:null, from:false, img:"img/p11.jpg", desc:"Rosas rojas en la caja negra de la casa, listas para regalar." },
+  { id:"p10", name:"Ramo grande de rosas rojas",    cat:"Rosas",           price:null, old:null, from:false, img:"img/p10.jpg", desc:"Ramo grande de rosas rojas, para sorprender en grande." },
+  { id:"p12", name:"Ramo de rosas con mariposa",    cat:"Rosas",           price:null, old:null, from:false, img:"img/p12.jpg", desc:"Ramo de rosas rojas con un detalle de mariposa dorada." },
+  { id:"p9",  name:"Decoración de iglesia para bodas", cat:"Bodas y eventos", price:null, old:null, from:false, img:"img/p9.jpg", desc:"Arreglos y decoraciones de iglesia para el día de tu boda. También eventos y matrimonios." },
+  { id:"p7",  name:"Decoración para bodas y eventos", cat:"Bodas y eventos", price:null, old:null, from:false, img:"img/p7.jpg", desc:"Decoración y arreglos para tu boda o evento. Participamos en Expo Bodas 2025, en Mall del Sol." }
+];
+var cart = {}; // id -> qty
+var activeCat = "Todas";
+
+function money(n){ return "$" + n.toFixed(2); }
+function byId(id){ return PRODUCTS.filter(function(p){ return p.id===id; })[0]; }
+function priceLabel(p){
+  if(p.price===null) return '<span class="ask">Precio a consultar</span>';
+  var s = (p.from ? "Desde " : "") + money(p.price);
+  if(p.old) s = '<span class="old">' + money(p.old) + '</span>' + s + '<span class="offer">OFERTA</span>';
+  return s;
+}
+function renderCats(){
+  var cats = ["Todas"];
+  PRODUCTS.forEach(function(p){ if(cats.indexOf(p.cat)===-1) cats.push(p.cat); });
+  document.getElementById("cats").innerHTML = cats.map(function(c){
+    return '<button data-cat="' + c + '"' + (c===activeCat ? ' class="active"' : '') + '>' + c + '</button>';
+  }).join("");
+  Array.prototype.forEach.call(document.querySelectorAll("#cats button"), function(b){
+    b.addEventListener("click", function(){ activeCat = b.getAttribute("data-cat"); renderCats(); renderGrid(); });
+  });
+}
+function renderGrid(){
+  var list = PRODUCTS.filter(function(p){ return activeCat==="Todas" || p.cat===activeCat; });
+  document.getElementById("grid").innerHTML = list.map(function(p){
+    var qty = cart[p.id] || 0;
+    return '<article class="card">' +
+      '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy">' +
+      '<div class="body">' +
+        '<span class="cat">' + p.cat + '</span>' +
+        '<h3>' + p.name + '</h3>' +
+        '<p>' + p.desc + '</p>' +
+        '<div class="price">' + priceLabel(p) + '</div>' +
+        (qty===0
+          ? '<button class="addbtn" data-add="' + p.id + '">Agregar al pedido</button>'
+          : '<div class="stepper" style="display:flex"><button data-dec="' + p.id + '">−</button><span>' + qty + ' en tu pedido</span><button data-inc="' + p.id + '">+</button></div>') +
+      '</div></article>';
+  }).join("");
+  bindGrid();
+}
+function bindGrid(){
+  Array.prototype.forEach.call(document.querySelectorAll("[data-add]"), function(b){
+    b.addEventListener("click", function(){ cart[b.getAttribute("data-add")] = 1; sync(); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-inc]"), function(b){
+    b.addEventListener("click", function(){ var id=b.getAttribute("data-inc"); cart[id]++; sync(); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-dec]"), function(b){
+    b.addEventListener("click", function(){ var id=b.getAttribute("data-dec"); cart[id]--; if(cart[id]<=0) delete cart[id]; sync(); });
+  });
+}
+function totals(){
+  var count=0, total=0, hasAsk=false;
+  Object.keys(cart).forEach(function(id){
+    var p=byId(id); count+=cart[id];
+    if(p.price===null) hasAsk=true; else total+=p.price*cart[id];
+  });
+  return {count:count, total:total, hasAsk:hasAsk};
+}
+function sync(){
+  renderGrid();
+  var t=totals();
+  var bar=document.getElementById("cartbar");
+  bar.style.display = t.count>0 ? "block" : "none";
+  document.getElementById("cartcount").textContent = t.count + (t.count===1 ? " producto" : " productos");
+  document.getElementById("carttotal").textContent = money(t.total) + (t.hasAsk ? " + a consultar" : "");
+  renderSheet(t);
+}
+function renderSheet(t){
+  t = t || totals();
+  var html = Object.keys(cart).map(function(id){
+    var p=byId(id);
+    var pr = p.price===null ? "Precio a consultar" : money(p.price) + " c/u";
+    return '<div class="item"><div><div class="nm">' + p.name + '</div><div class="pr">' + pr + '</div></div>' +
+      '<div class="st"><button data-sdec="' + id + '">−</button><span>' + cart[id] + '</span><button data-sinc="' + id + '">+</button></div></div>';
+  }).join("");
+  document.getElementById("items").innerHTML = html || '<p class="sub">Tu pedido está vacío.</p>';
+  document.getElementById("sheetTotal").textContent = money(t.total);
+  document.getElementById("totalNote").textContent = t.hasAsk ? "El total incluye solo los productos con precio. Los marcados «a consultar» se confirman por WhatsApp." : "";
+  Array.prototype.forEach.call(document.querySelectorAll("[data-sinc]"), function(b){
+    b.addEventListener("click", function(){ cart[b.getAttribute("data-sinc")]++; sync(); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-sdec]"), function(b){
+    b.addEventListener("click", function(){ var id=b.getAttribute("data-sdec"); cart[id]--; if(cart[id]<=0) delete cart[id]; sync(); if(totals().count===0) closeSheetFn(); });
+  });
+}
+function openSheetFn(){ renderSheet(); document.getElementById("overlay").style.display="block"; document.getElementById("sheet").style.display="block"; }
+function closeSheetFn(){ document.getElementById("overlay").style.display="none"; document.getElementById("sheet").style.display="none"; }
+document.getElementById("openCart").addEventListener("click", openSheetFn);
+document.getElementById("closeSheet").addEventListener("click", closeSheetFn);
+document.getElementById("overlay").addEventListener("click", closeSheetFn);
+document.getElementById("sendOrder").addEventListener("click", function(){
+  var phone = document.getElementById("cphone").value.trim();
+  var err = document.getElementById("formErr");
+  if(!phone){ err.style.display="block"; document.getElementById("cphone").focus(); return; }
+  err.style.display="none";
+  var name = document.getElementById("cname").value.trim();
+  var note = document.getElementById("cnote").value.trim();
+  var t = totals();
+  var lines = ["Hola, Catlleya Floristería. Quiero hacer un pedido desde el catálogo:", ""];
+  Object.keys(cart).forEach(function(id){
+    var p=byId(id);
+    var pr = p.price===null ? "Precio a consultar" : money(p.price);
+    lines.push("• " + cart[id] + " × " + p.name + " — " + pr);
+  });
+  lines.push("");
+  lines.push("Total de productos con precio: " + money(t.total));
+  if(name) lines.push("Nombre: " + name);
+  lines.push("Teléfono: " + phone);
+  if(note) lines.push("Nota: " + note);
+  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(lines.join("\n")), "_blank");
+});
+renderCats();
+sync();
+</script>
+</body>
+</html>
