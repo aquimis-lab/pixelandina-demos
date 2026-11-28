@@ -18,6 +18,7 @@
   html{scroll-behavior:smooth;}
   body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif; color:var(--ink); background:#fff;}
   img{display:block; max-width:100%;}
+  html,body{overflow-x:hidden;}
   .ribbon{background:linear-gradient(90deg,var(--rose-dark),var(--rose)); color:#fff; text-align:center; font-size:13px; font-weight:500; padding:9px 14px; letter-spacing:.02em;}
 
   /* ---------- Barra superior ---------- */
@@ -88,22 +89,15 @@
   .stepper span{font-weight:700; font-size:13.5px; color:var(--rose-dark);}
 
   /* ---------- Pie ---------- */
-  footer{max-width:1280px; margin:34px auto 0; padding:24px 20px 110px; text-align:center; color:var(--muted); font-size:13px; line-height:1.65; border-top:1px solid var(--line);}
-  @media(min-width:900px){ footer{padding-bottom:40px;} }
+  footer{max-width:1280px; margin:34px auto 0; padding:24px 20px 44px; text-align:center; color:var(--muted); font-size:13px; line-height:1.65; border-top:1px solid var(--line);}
+  
   footer a{color:var(--rose-dark); text-decoration:none; font-weight:700;}
-
-  /* ---------- Barra móvil del pedido ---------- */
-  .mobilebar{position:fixed; left:12px; right:12px; bottom:12px; z-index:45; background:var(--ink); color:#fff; border-radius:16px; padding:12px 16px; display:none; align-items:center; justify-content:space-between; gap:12px; box-shadow:0 16px 34px rgba(0,0,0,.30); cursor:pointer; border:none; width:calc(100% - 24px); text-align:left;}
-  .mobilebar .l{font-size:13px; opacity:.85;}
-  .mobilebar .l strong{display:block; font-size:16px; opacity:1;}
-  .mobilebar .r{background:var(--wa); color:#fff; font-weight:800; font-size:14.5px; border-radius:11px; padding:10px 16px;}
-  @media(min-width:900px){ .mobilebar{display:none !important;} }
 
   /* ---------- Carrito lateral ---------- */
   .overlay{position:fixed; inset:0; background:rgba(35,12,20,.52); opacity:0; pointer-events:none; transition:opacity .25s; z-index:50;}
   .overlay.on{opacity:1; pointer-events:auto;}
-  .drawer{position:fixed; top:0; right:0; height:100dvh; width:min(420px,100vw); background:#fff; z-index:51; transform:translateX(105%); transition:transform .3s cubic-bezier(.32,.72,.24,1); display:flex; flex-direction:column; box-shadow:-18px 0 50px rgba(0,0,0,.20);}
-  .drawer.on{transform:translateX(0);}
+  .drawer{position:fixed; top:0; right:0; height:100dvh; width:min(420px,100vw); background:#fff; z-index:51; transform:translateX(105%); visibility:hidden; transition:transform .3s cubic-bezier(.32,.72,.24,1), visibility 0s linear .3s; display:flex; flex-direction:column; box-shadow:-18px 0 50px rgba(0,0,0,.20);}
+  .drawer.on{transform:translateX(0); visibility:visible; transition:transform .3s cubic-bezier(.32,.72,.24,1);}
   .drawer header{padding:18px 20px 12px; border-bottom:1px solid var(--line); display:flex; align-items:flex-start; justify-content:space-between;}
   .drawer h2{font-family:'Fraunces',serif; font-size:22px; color:var(--rose-dark);}
   .drawer .sub{font-size:13px; color:var(--muted); margin-top:3px;}
@@ -130,6 +124,33 @@
   .send svg{width:20px; height:20px; fill:#fff;}
   .drawer .alt{margin-top:11px; text-align:center; font-size:13px; color:var(--muted);}
   .drawer .alt a{color:var(--rose-dark); font-weight:700; text-decoration:none;}
+
+  /* ---------- Ajustes v3: móvil sin desborde, hero con foto protagonista ---------- */
+  @media(max-width:899px){
+    .hero .in{display:flex; flex-direction:column; align-items:stretch; gap:18px; padding:30px 20px 24px;}
+    .hero .in > div:first-child{display:contents;}
+    .hero h1{order:1; font-size:33px;}
+    .hero .tag{order:2; margin-top:0;}
+    .hero-img{order:3;}
+    .hero-img img{height:250px;}
+    .hero .ctas{order:4; margin-top:0;}
+    .hero .meta{order:5; margin-top:0;}
+  }
+  @media(max-width:640px){
+    .ribbon{font-size:12px; padding:8px 10px;}
+    .topbar .in{padding:10px 14px; gap:8px;}
+    .brand{font-size:16px; gap:7px; white-space:nowrap;}
+    .brand .fl{width:29px; height:29px; font-size:14px;}
+    .ig-link{display:none;}
+    .cart-btn{padding:9px 13px; font-size:13px; gap:6px;}
+    .cats-wrap{top:56px;}
+    .cats{padding:10px 14px;}
+    main{padding:22px 14px 8px;}
+    .grid{gap:13px;}
+    .card .body{padding:12px 12px 14px;}
+    .card h3{font-size:15px;}
+    .sec-title{font-size:23px;}
+  }
 </style>
 </head>
 <body>
@@ -175,13 +196,10 @@
 
 <footer>
   Catálogo de muestra preparado por <a href="https://pixelandina.online" target="_blank" rel="noopener">PixelAndina</a> para Catlleya Floristería.<br>
-  Los nombres, textos y precios salen de tu Instagram: en tu catálogo final ajustamos todo a tu gusto.
+  Los nombres, textos y precios salen de tu Instagram: en tu catálogo final ajustamos todo a tu gusto.<br>Síguela en <a href="https://www.instagram.com/floristeria_catlleya" target="_blank" rel="noopener">Instagram</a>.
 </footer>
 
-<button class="mobilebar" id="mobilebar">
-  <span class="l"><span id="mbCount">0 productos</span><strong id="mbTotal">$0.00</strong></span>
-  <span class="r">Ver pedido</span>
-</button>
+
 
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="drawer" aria-label="Tu pedido">
@@ -210,18 +228,17 @@
 <script>
 var WA = "593993168659";
 var PRODUCTS = [
-  { id:"p2",  name:"Ramo de 25 rosas rojas",        cat:"Rosas",           price:30,   old:40,   from:false, img:"img/p2.jpg",  desc:"25 rosas rojas con aliento de bebé. El detalle perfecto para sorprender y crear un momento inolvidable." },
-  { id:"p3",  name:"Bouquet listo para regalar",    cat:"Bouquets",        price:15,   old:null, from:true,  img:"img/p3.jpg",  desc:"Bouquets listos para regalar: cumpleaños, aniversarios o un detalle inesperado. Entregas en Guayaquil." },
-  { id:"p5",  name:"Bouquets mixtos",               cat:"Bouquets",        price:15,   old:null, from:true,  img:"img/p5.jpg",  desc:"Bouquets mixtos de rosas y girasoles, para todos los gustos." },
-  { id:"p1",  name:"Arreglo de flores amarillas",   cat:"Bouquets",        price:null, old:null, from:false, img:"img/p1.jpg",  desc:"Flores amarillas para llenar de alegría a alguien especial. Un detalle que nunca se olvida." },
+  { id:"p2",  name:"Ramo de 25 rosas rojas",        cat:"Rosas",           price:30,   old:40,   from:false, img:"img/c2.jpg",  desc:"25 rosas rojas con aliento de bebé. El detalle perfecto para sorprender y crear un momento inolvidable." },
+  { id:"p3",  name:"Bouquet listo para regalar",    cat:"Bouquets",        price:15,   old:null, from:true,  img:"img/c3.jpg",  desc:"Bouquets listos para regalar: cumpleaños, aniversarios o un detalle inesperado." },
+  { id:"p5",  name:"Bouquets mixtos",               cat:"Bouquets",        price:15,   old:null, from:true,  img:"img/c5.jpg",  desc:"Bouquets mixtos de rosas y girasoles, para todos los gustos." },
+  { id:"p1",  name:"Arreglo de flores amarillas",   cat:"Bouquets",        price:null, old:null, from:false, img:"img/c1.jpg",  desc:"Flores amarillas para llenar de alegría a alguien especial. Un detalle que nunca se olvida." },
   { id:"p4",  name:"Arreglo para tu mejor amiga",   cat:"Bouquets",        price:null, old:null, from:false, img:"img/p4.jpg",  desc:"Arreglos perfectos para amistad, cumpleaños o un «solo porque sí». Entregas en oficina y domicilio." },
-  { id:"p6",  name:"Arreglo especial de rosas rojas", cat:"Rosas",         price:null, old:null, from:false, img:"img/p6.jpg",  desc:"Arreglos especiales de rosas rojas para el amor y la amistad." },
+  { id:"p6",  name:"Arreglo especial de rosas rojas", cat:"Rosas",         price:null, old:null, from:false, img:"img/c6.jpg",  desc:"Arreglos especiales de rosas rojas para el amor y la amistad." },
   { id:"p8",  name:"Gran arreglo de rosas rojas",   cat:"Rosas",           price:null, old:null, from:false, img:"img/p8.jpg",  desc:"Arreglo grande de rosas rojas para ocasiones especiales." },
   { id:"p11", name:"Caja de rosas rojas",           cat:"Rosas",           price:null, old:null, from:false, img:"img/p11.jpg", desc:"Rosas rojas en la caja negra de la casa, listas para regalar." },
   { id:"p10", name:"Ramo grande de rosas rojas",    cat:"Rosas",           price:null, old:null, from:false, img:"img/p10.jpg", desc:"Ramo grande de rosas rojas, para sorprender en grande." },
-  { id:"p12", name:"Ramo de rosas con mariposa",    cat:"Rosas",           price:null, old:null, from:false, img:"img/p12.jpg", desc:"Ramo de rosas rojas con un detalle de mariposa dorada." },
-  { id:"p9",  name:"Decoración de iglesia para bodas", cat:"Bodas y eventos", price:null, old:null, from:false, img:"img/p9.jpg", desc:"Arreglos y decoraciones de iglesia para el día de tu boda. También eventos y matrimonios." },
-  { id:"p7",  name:"Decoración para bodas y eventos", cat:"Bodas y eventos", price:null, old:null, from:false, img:"img/p7.jpg", desc:"Decoración y arreglos para tu boda o evento. Participamos en Expo Bodas 2025, en Mall del Sol." }
+  { id:"p12", name:"Ramo de rosas con mariposa",    cat:"Rosas",           price:null, old:null, from:false, img:"img/c12.jpg", desc:"Ramo de rosas rojas con un detalle de mariposa dorada." },
+    { id:"p7",  name:"Decoración para bodas, iglesias y eventos", cat:"Bodas y eventos", price:null, old:null, from:false, img:"img/p7.jpg", desc:"Decoración y arreglos para bodas, iglesias y eventos. Participamos en Expo Bodas 2025, en Mall del Sol." }
 ];
 var cart = {};
 var activeCat = "Todas";
@@ -280,10 +297,6 @@ function sync(){
   renderGrid();
   var t=totals();
   document.getElementById("cartBadge").textContent = t.count;
-  var mb=document.getElementById("mobilebar");
-  mb.style.display = t.count>0 ? "flex" : "none";
-  document.getElementById("mbCount").textContent = t.count + (t.count===1 ? " producto" : " productos");
-  document.getElementById("mbTotal").textContent = money(t.total) + (t.hasAsk ? " + a consultar" : "");
   renderDrawer(t);
 }
 function renderDrawer(t){
@@ -312,7 +325,6 @@ function renderDrawer(t){
 function openDrawer(){ renderDrawer(); document.getElementById("overlay").classList.add("on"); document.getElementById("drawer").classList.add("on"); document.body.style.overflow="hidden"; }
 function closeDrawer(){ document.getElementById("overlay").classList.remove("on"); document.getElementById("drawer").classList.remove("on"); document.body.style.overflow=""; }
 document.getElementById("cartBtn").addEventListener("click", openDrawer);
-document.getElementById("mobilebar").addEventListener("click", openDrawer);
 document.getElementById("closeDrawer").addEventListener("click", closeDrawer);
 document.getElementById("overlay").addEventListener("click", closeDrawer);
 document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeDrawer(); });
